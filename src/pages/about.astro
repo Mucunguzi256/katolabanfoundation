@@ -1,0 +1,235 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const coreValues = [
+  {
+    title: "Giving a hand to another",
+    description: "We believe in the power of community support and helping those in need. Every action of kindness creates a ripple effect that strengthens our entire community."
+  },
+  {
+    title: "Resilience",
+    description: "We are committed to building resilience in the face of challenges. Through perseverance and determination, we overcome obstacles to create lasting change."
+  },
+  {
+    title: "Innovation",
+    description: "We embrace creative solutions and new approaches to address persistent problems. Innovation drives our ability to find better ways to serve our community."
+  },
+  {
+    title: "Prosperity for future generations",
+    description: "We work today to ensure a brighter tomorrow. Every program and initiative is designed with future generations in mind, creating sustainable pathways to prosperity."
+  }
+];
+---
+
+<Layout title="About">
+  <section class="page-header">
+    <div class="container">
+      <h1>About Us</h1>
+      <p>Learn about our story, our mission, and the values that drive our work.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="content-block">
+        <h2>Our Story</h2>
+        <p>Kato Laban Foundation was established with a clear vision: to empower communities in Isingiro District by providing knowledge and sustainable development that enhances a quality life for the most vulnerable populations.</p>
+        <p>Operating from Kikagate Town Council in Isingiro District, we have dedicated ourselves to improving health outcomes, expanding access to quality education, and promoting climate education and climate justice.</p>
+        <p>Our team works closely with local communities, understanding their unique challenges and strengths. We believe that sustainable change comes from within the community, and we are here to support that journey every step of the way.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section location-section">
+    <div class="container">
+      <div class="location-content">
+        <h2>Our Location</h2>
+        <p>We are based in Kikagate Town Council, Isingiro District, Uganda. This region presents both unique opportunities and challenges that shape our work.</p>
+        <p>Isingiro District is located in the southwestern part of Uganda, near the border with Tanzania. The district is predominantly rural, with farming being the main source of livelihood for most families. Healthcare and education infrastructure in the area has historically been limited, which is why our work is so critical.</p>
+        <p>Being embedded in the community allows us to understand local needs intimately and respond with targeted programs that make a real difference.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section values-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Core Values</h2>
+        <p>These values guide everything we do at Kato Laban Foundation.</p>
+      </div>
+      <div class="values-grid">
+        {coreValues.map((value, index) => (
+          <div class="value-card">
+            <div class="value-number">{index + 1}</div>
+            <h3>{value.title}</h3>
+            <p>{value.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Join Our Mission</h2>
+        <p>We invite you to be part of the change we are creating in Isingiro District. Your support, whether through donations, volunteering, or simply spreading the word, helps us build a healthier, better educated community.</p>
+        <a href="/get-involved" class="btn btn-accent">Get Involved</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-header {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    padding: var(--spacing-3xl) 0;
+    text-align: center;
+    position: relative;
+  }
+
+  .page-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/foundation.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3;
+  }
+
+  .page-header > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .page-header h1 {
+    color: var(--color-white);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .page-header p {
+    color: var(--color-neutral-100);
+    font-size: var(--font-size-lg);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .content-block {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .content-block h2 {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .content-block p {
+    color: var(--color-neutral-700);
+    line-height: 1.8;
+  }
+
+  .location-section {
+    background-color: var(--color-neutral-100);
+  }
+
+  .location-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .location-content h2 {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .location-content p {
+    color: var(--color-neutral-700);
+    line-height: 1.8;
+  }
+
+  .values-section {
+    background-color: var(--color-neutral-50);
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-xl);
+  }
+
+  .value-card {
+    background-color: var(--color-white);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-sm);
+    position: relative;
+  }
+
+  .value-number {
+    position: absolute;
+    top: var(--spacing-lg);
+    right: var(--spacing-lg);
+    width: 40px;
+    height: 40px;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-radius: var(--border-radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: var(--font-size-lg);
+  }
+
+  .value-card h3 {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-md);
+    padding-right: var(--spacing-xl);
+  }
+
+  .value-card p {
+    color: var(--color-neutral-600);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .cta-section {
+    background-color: var(--color-neutral-100);
+    text-align: center;
+  }
+
+  .cta-content {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: var(--spacing-2xl);
+    background-color: var(--color-white);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-md);
+  }
+
+  .cta-section h2 {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .cta-section p {
+    color: var(--color-neutral-600);
+    margin-bottom: var(--spacing-xl);
+    font-size: var(--font-size-lg);
+  }
+
+  @media (max-width: 768px) {
+    .page-header {
+      padding: var(--spacing-2xl) 0;
+    }
+
+    .values-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .value-number {
+      position: static;
+      margin-bottom: var(--spacing-md);
+    }
+  }
+</style>

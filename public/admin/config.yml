@@ -1,0 +1,73 @@
+backend:
+  name: github
+  repo: your-username/katolabanfoundation
+  branch: main
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "settings"
+    label: "Settings"
+    identifier_field: "id"
+    folder: "_data"
+    create: false
+    extension: "yml"
+    format: "yml"
+    fields:
+      - name: "id"
+        label: "ID"
+        widget: "hidden"
+        default: "settings"
+      - name: "mission"
+        label: "Mission"
+        widget: "text"
+        default: "To empower communities in Isingiro District by providing knowledge and sustainable development that enhances a quality life for the most vulnerable populations."
+      - name: "vision"
+        label: "Vision"
+        widget: "text"
+        default: "To build a thriving, healthy and well educated community where every individual has the opportunity to achieve their full potential."
+      - name: "core_values"
+        label: "Core Values"
+        widget: "text"
+        default: "Giving a hand to another, Resilience, Innovation, Prosperity for future generations."
+      - name: "phone"
+        label: "Phone Number"
+        widget: "text"
+        default: "+256784332800"
+      - name: "email"
+        label: "Email"
+        widget: "text"
+        default: "contact@katolabanfoundation.org"
+      - name: "address"
+        label: "Address"
+        widget: "text"
+        default: "Kikagate Town Council, Isingiro District, Uganda"
+
+  - name: "posts"
+    label: "News Posts"
+    folder: "src/content/posts"
+    create: true
+    extension: "md"
+    format: "frontmatter"
+    fields:
+      - name: "title"
+        label: "Title"
+        widget: "string"
+        required: true
+      - name: "date"
+        label: "Date"
+        widget: "datetime"
+        required: true
+      - name: "excerpt"
+        label: "Excerpt"
+        widget: "text"
+        required: true
+      - name: "image"
+        label: "Featured Image"
+        widget: "image"
+        required: false
+      - name: "body"
+        label: "Body"
+        widget: "markdown"
+        required: true

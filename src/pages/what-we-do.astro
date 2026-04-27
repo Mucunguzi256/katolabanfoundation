@@ -1,0 +1,276 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const programs = [
+  {
+    title: "Health Outcomes",
+    description: "We are dedicated to improving health outcomes for communities in Isingiro District through comprehensive healthcare programs and initiatives.",
+    focusAreas: [
+      {
+        title: "Healthcare Access",
+        description: "We work to expand access to healthcare services for rural and underserved communities, partnering with local health centers to provide essential medical care."
+      },
+      {
+        title: "Nutrition Programs",
+        description: "Our nutrition initiatives target malnutrition particularly among children and pregnant women, providing supplementary foods and education on balanced diets."
+      },
+      {
+        title: "Health Education",
+        description: "We deliver health education programs on disease prevention, hygiene practices, and family health, empowering community members with knowledge to protect themselves and their families."
+      },
+      {
+        title: "Mobile Health Clinics",
+        description: "Our mobile health clinics bring essential medical services directly to remote villages, ensuring that geography does not prevent access to healthcare."
+      }
+    ]
+  },
+  {
+    title: "Quality Education",
+    description: "We believe that education is the foundation for sustainable development. Our education programs focus on expanding access to quality learning opportunities for all children.",
+    focusAreas: [
+      {
+        title: "School Support",
+        description: "We support local schools with infrastructure improvements, learning materials, and resources to create conducive learning environments for students."
+      },
+      {
+        title: "Teacher Training",
+        description: "Our professional development programs for teachers focus on modern teaching methodologies and student centered learning approaches."
+      },
+      {
+        title: "Student Scholarships",
+        description: "We provide scholarships to outstanding students from disadvantaged backgrounds, enabling them to continue their education beyond primary school."
+      },
+      {
+        title: "Literacy Programs",
+        description: "Our adult literacy programs empower community members with reading and writing skills, opening new opportunities for employment and self improvement."
+      }
+    ]
+  },
+  {
+    title: "Climate Education and Justice",
+    description: "We promote climate education and environmental stewardship while building community resilience to climate change impacts.",
+    focusAreas: [
+      {
+        title: "Climate Awareness",
+        description: "We educate communities about climate change, its causes, and its impacts, helping people understand why adaptation is essential."
+      },
+      {
+        title: "Sustainable Agriculture",
+        description: "Our training programs teach farmers climate smart agricultural practices that increase productivity while protecting the environment."
+      },
+      {
+        title: " reforestation",
+        description: "We lead community tree planting initiatives to restore degraded lands and create sustainable sources of firewood and timber."
+      },
+      {
+        title: "Disaster Preparedness",
+        description: "We build community capacity to prepare for and respond to climate related disasters such as floods and droughts."
+      }
+    ]
+  }
+];
+---
+
+<Layout title="What We Do">
+  <section class="page-header">
+    <div class="container">
+      <h1>What We Do</h1>
+      <p>Our programs address health, education, and climate challenges in Isingiro District.</p>
+    </div>
+  </section>
+
+  <section class="section intro-section">
+    <div class="container">
+      <div class="intro-content">
+        <p>At Kato Laban Foundation, our work focuses on three interconnected areas that are essential for community development. We believe that health, education, and environmental sustainability are all linked, and improving one area positively affects the others.</p>
+        <p>Every program we develop is community led, ensuring that our initiatives address real needs and create lasting change.</p>
+      </div>
+    </div>
+  </section>
+
+  {programs.map((program, index) => (
+    <section class="section program-section">
+      <div class="container">
+        <div class="program-header">
+          <div class="program-number">{index + 1}</div>
+          <div>
+            <h2>{program.title}</h2>
+            <p>{program.description}</p>
+          </div>
+        </div>
+        <div class="focus-grid">
+          {program.focusAreas.map(focus => (
+            <div class="focus-card">
+              <h3>{focus.title}</h3>
+              <p>{focus.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <section class="section cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Support Our Work</h2>
+        <p>Your contribution can help us expand our programs and reach more communities in need. Join us in creating lasting positive change in Isingiro District.</p>
+        <a href="/get-involved" class="btn btn-accent">Get Involved</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-header {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    padding: var(--spacing-3xl) 0;
+    text-align: center;
+    position: relative;
+  }
+
+  .page-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/foundation.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3;
+  }
+
+  .page-header > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .page-header h1 {
+    color: var(--color-white);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .page-header p {
+    color: var(--color-neutral-100);
+    font-size: var(--font-size-lg);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .intro-section {
+    background-color: var(--color-neutral-50);
+  }
+
+  .intro-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .intro-content p {
+    font-size: var(--font-size-lg);
+    color: var(--color-neutral-700);
+    line-height: 1.8;
+  }
+
+  .program-section {
+    background-color: var(--color-white);
+  }
+
+  .program-header {
+    display: flex;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  .program-number {
+    width: 60px;
+    height: 60px;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-radius: var(--border-radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: var(--font-size-xl);
+    flex-shrink: 0;
+  }
+
+  .program-header h2 {
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-primary);
+  }
+
+  .program-header p {
+    color: var(--color-neutral-600);
+    font-size: var(--font-size-lg);
+    margin: 0;
+  }
+
+  .focus-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+  }
+
+  .focus-card {
+    background-color: var(--color-neutral-50);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    border-left: 3px solid var(--color-primary);
+  }
+
+  .focus-card h3 {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .focus-card p {
+    color: var(--color-neutral-600);
+    margin: 0;
+  }
+
+  .cta-section {
+    background-color: var(--color-neutral-100);
+    text-align: center;
+  }
+
+  .cta-content {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: var(--spacing-2xl);
+    background-color: var(--color-white);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-md);
+  }
+
+  .cta-section h2 {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .cta-section p {
+    color: var(--color-neutral-600);
+    margin-bottom: var(--spacing-xl);
+    font-size: var(--font-size-lg);
+  }
+
+  @media (max-width: 768px) {
+    .page-header {
+      padding: var(--spacing-2xl) 0;
+    }
+
+    .program-header {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .program-number {
+      margin: 0 auto;
+    }
+
+    .focus-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

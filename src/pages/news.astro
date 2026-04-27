@@ -1,0 +1,189 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const posts = [
+  {
+    title: "New Health Clinic Opens in Kikagate",
+    date: "April 15, 2026",
+    excerpt: "We are thrilled to announce the opening of a new health clinic in Kikagate Town Council, bringing essential healthcare services closer to the community.",
+    slug: "new-health-clinic-opens"
+  },
+  {
+    title: "Annual Report 2025 Released",
+    date: "March 1, 2026",
+    excerpt: "Our annual report for 2025 is now available, highlighting the impact we have made together in health, education, and climate programs.",
+    slug: "annual-report-2025"
+  },
+  {
+    title: "School Scholarship Program Expands",
+    date: "February 10, 2026",
+    excerpt: "Thanks to our generous donors, we are able to double the number of scholarships available for students in Isingiro District this year.",
+    slug: "scholarship-program-expands"
+  },
+  {
+    title: "Tree Planting Initiative Success",
+    date: "January 20, 2026",
+    excerpt: "Our recent tree planting campaign resulted in over 5,000 trees being planted across Isingiro District, supporting reforestation efforts.",
+    slug: "tree-planting-initiative"
+  }
+];
+---
+
+<Layout title="News">
+  <section class="page-header">
+    <div class="container">
+      <h1>News and Updates</h1>
+      <p>Stay informed about our latest activities, impact stories, and announcements.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="posts-grid">
+        {posts.map(post => (
+          <article class="post-card">
+            <div class="post-content">
+              <time datetime="2026-04-15">{post.date}</time>
+              <h2><a href={`/news/${post.slug}`}>{post.title}</a></h2>
+              <p>{post.excerpt}</p>
+              <a href={`/news/${post.slug}`} class="read-more">Read more</a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Share Your Story</h2>
+        <p>Are you a volunteer, donor, or community member with a story to share? We would love to hear from you.</p>
+        <a href="/contact" class="btn btn-accent">Contact Us</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-header {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    padding: var(--spacing-3xl) 0;
+    text-align: center;
+    position: relative;
+  }
+
+  .page-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/foundation.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3;
+  }
+
+  .page-header > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .page-header h1 {
+    color: var(--color-white);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .page-header p {
+    color: var(--color-neutral-100);
+    font-size: var(--font-size-lg);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-xl);
+  }
+
+  .post-card {
+    background-color: var(--color-white);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    transition: box-shadow var(--transition-base);
+  }
+
+  .post-card:hover {
+    box-shadow: var(--shadow-md);
+  }
+
+  .post-content {
+    padding: var(--spacing-xl);
+  }
+
+  .post-content time {
+    font-size: var(--font-size-sm);
+    color: var(--color-neutral-500);
+  }
+
+  .post-content h2 {
+    font-size: var(--font-size-xl);
+    margin: var(--spacing-sm) 0 var(--spacing-md);
+  }
+
+  .post-content h2 a {
+    color: var(--color-neutral-900);
+    transition: color var(--transition-fast);
+  }
+
+  .post-content h2 a:hover {
+    color: var(--color-primary);
+  }
+
+  .post-content p {
+    color: var(--color-neutral-600);
+    line-height: 1.7;
+  }
+
+  .read-more {
+    display: inline-block;
+    margin-top: var(--spacing-md);
+    font-weight: 500;
+    color: var(--color-primary);
+  }
+
+  .cta-section {
+    background-color: var(--color-neutral-100);
+    text-align: center;
+  }
+
+  .cta-content {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: var(--spacing-2xl);
+    background-color: var(--color-white);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-md);
+  }
+
+  .cta-section h2 {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .cta-section p {
+    color: var(--color-neutral-600);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  @media (max-width: 768px) {
+    .page-header {
+      padding: var(--spacing-2xl) 0;
+    }
+
+    .posts-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
