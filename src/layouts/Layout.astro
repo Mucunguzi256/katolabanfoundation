@@ -1,7 +1,6 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import '../styles/global.css';
 
 interface Props {
   title: string;
@@ -19,26 +18,16 @@ const { title, description = "Kato Laban Foundation - For Health and Education" 
   <meta name="description" content={description}>
   <title>{title} | Kato Laban Foundation</title>
 
-  <!--
-    NOTE: The user must manually place the following files into the public/ folder:
-    - logo.png (main logo image)
-    - favicon.ico
-    - favicon-32x32.png
-    - favicon-16x16.png
-    - apple-touch-icon.png
-  -->
-
   <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
   <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" href="/logo.png" sizes="32x32">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="font-sans antialiased text-gray-800 bg-white">
   <Header />
   <main>
     <slot />
