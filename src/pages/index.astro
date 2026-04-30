@@ -2,220 +2,315 @@
 import Layout from '../layouts/Layout.astro';
 
 const mission = "To empower communities in Isingiro District by providing knowledge and sustainable development that enhances a quality life for the most vulnerable populations.";
-
 const vision = "To build a thriving, healthy and well educated community where every individual has the opportunity to achieve their full potential.";
-
 const coreValues = "Giving a hand to another, Resilience, Innovation, Prosperity for future generations.";
 
 const workAreas = [
-  {
-    title: "Health",
-    description: "Improving health outcomes through healthcare access, nutrition programs, and health education initiatives.",
-    icon: "health"
-  },
-  {
-    title: "Education",
-    description: "Expanding access to quality education by supporting schools, training teachers, and providing learning materials.",
-    icon: "education"
-  },
-  {
-    title: "Climate Justice",
-    description: "Promoting climate education and environmental stewardship while building community resilience.",
-    icon: "climate"
-  }
+  { title: "Health", description: "Improving health outcomes through healthcare access, nutrition programs, and health education.", icon: "heart" },
+  { title: "Education", description: "Expanding access to quality education by supporting schools, training teachers, and providing learning materials.", icon: "book" },
+  { title: "Climate Justice", description: "Promoting climate education and environmental stewardship while building community resilience.", icon: "leaf" }
+];
+
+const newsItems = [
+  { category: "Health", date: "April 2026", title: "Mobile Health Clinic Reaches 500+ Residents in Remote Villages", excerpt: "Our mobile health unit visited 12 villages this month, providing essential medical care to over 500 residents..." },
+  { category: "Education", date: "March 2026", title: "Three Schools Receive New Learning Materials and Furniture", excerpt: "Students at St. Joseph's Primary School now have access to 200 new textbooks and 50 desks..." },
+  { category: "Climate", date: "February 2026", title: "Community Tree Planting Initiative Plants 200+ Trees", excerpt: "Local farmers joined our reforestation program, planting fruit and timber trees across 5 hectares..." }
 ];
 ---
 
 <Layout title="Home">
+  <!-- Hero Section -->
   <section class="hero">
-    <div class="hero-overlay"></div>
+    <div class="hero-gradient"></div>
+    <div class="hero-bg-pattern"></div>
     <div class="hero-content">
-      <h1>Empowering Communities in Isingiro District</h1>
-      <p>Building a healthier, better-educated future for all.</p>
-      <a href="/get-involved" class="hero-cta">Join Us Today</a>
+      <span class="hero-label">Isingiro District, Uganda</span>
+      <h1>Empowering Communities,<br/>Building Lasting Change</h1>
+      <p class="hero-subtitle">Health. Education. Climate Justice.</p>
+      <div class="hero-buttons">
+        <a href="/what-we-do" class="btn btn-primary">Our Programs</a>
+        <a href="/get-involved" class="btn btn-outline">Get Involved</a>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <div class="scroll-arrow"></div>
     </div>
   </section>
 
-  <div class="warm-bg">
-    <section class="about-section">
-      <div class="container">
-        <div class="about-grid">
-          <div class="about-text">
-            <span class="section-label">About Us</span>
-            <h2>Building a Better Future for Isingiro District</h2>
-            <p>{mission}</p>
-            <a href="/about" class="learn-more">Learn more about us <span>→</span></a>
-          </div>
-          <div class="stats-grid">
-            <div class="stat-card">
-              <div class="stat-icon">❤️</div>
-              <div class="stat-number">3</div>
-              <div class="stat-label">Program Areas</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-icon">🙌</div>
-              <div class="stat-number">1000+</div>
-              <div class="stat-label">Lives Impacted</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-icon">📅</div>
-              <div class="stat-number">5+</div>
-              <div class="stat-label">Years Serving</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-icon">📍</div>
-              <div class="stat-number">1</div>
-              <div class="stat-label">District Covered</div>
-            </div>
-          </div>
+  <!-- Stats Bar -->
+  <section class="stats-bar">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span class="stat-number">3</span>
+          <span class="stat-label">Program Areas</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">1000+</span>
+          <span class="stat-label">Lives Impacted</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">5+</span>
+          <span class="stat-label">Years Serving</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">1</span>
+          <span class="stat-label">District, Deep Focus</span>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="programs-section">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-label">What We Do</span>
-          <h2>Our Mission in Action</h2>
-          <p>We work across three key areas to create lasting positive change in Isingiro District.</p>
+  <!-- About Preview -->
+  <section class="about-preview">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image">
+          <div class="image-placeholder">
+            <div class="corner-accent"></div>
+            <span>Community Together</span>
+          </div>
         </div>
-        <div class="programs-grid">
-          {workAreas.map((area) => (
-            <div class="program-card">
-              <div class="program-icon">
-                {area.icon === 'health' && (
-                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                  </svg>
-                )}
-                {area.icon === 'education' && (
-                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
-                  </svg>
-                )}
-                {area.icon === 'climate' && (
-                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8H5.5a2.5 2.5 0 000 5H8a2.5 2.5 0 012 2v1.055M20 21v-8a2 2 0 00-2-2h-1.055M16.5 12.5A2.5 2.5 0 0014 10h-4a2.5 2.5 0 000 5h4a2.5 2.5 0 001.5-2.5z" />
-                  </svg>
-                )}
-              </div>
-              <h3>{area.title}</h3>
-              <p>{area.description}</p>
-              <a href="/what-we-do" class="learn-more">Learn more <span>→</span></a>
+        <div class="about-text">
+          <span class="section-label">Who We Are</span>
+          <h2>Built for Isingiro's Most Vulnerable</h2>
+          <p>{mission}</p>
+          <a href="/about" class="learn-more">Learn More About Us <span>→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Programs -->
+  <section class="programs-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Our Mission in Action</h2>
+        <p>We work across three key areas to create lasting positive change in Isingiro District.</p>
+      </div>
+      <div class="programs-grid">
+        {workAreas.map(area => (
+          <div class="program-card">
+            <div class="program-icon">
+              {area.icon === 'heart' && (
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
+              )}
+              {area.icon === 'book' && (
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" /></svg>
+              )}
+              {area.icon === 'leaf' && (
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8H5.5a2.5 2.5 0 000 5H8a2.5 2.5 0 012 2v1.055M20 21v-8a2 2 0 00-2-2h-1.055M16.5 12.5A2.5 2.5 0 0014 10h-4a2.5 2.5 0 000 5h4a2.5 2.5 0 001.5-2.5z" /></svg>
+              )}
             </div>
-          ))}
-        </div>
+            <h3>{area.title}</h3>
+            <p>{area.description}</p>
+            <a href="/what-we-do" class="learn-more">Learn more <span>→</span></a>
+          </div>
+        ))}
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="mission-section">
-      <div class="container">
-        <div class="mission-grid">
-          <div class="mission-card">
-            <span class="mission-label">Our Mission</span>
-            <p>{mission}</p>
-          </div>
-          <div class="mission-card">
-            <span class="mission-label">Our Vision</span>
-            <p>{vision}</p>
-          </div>
-          <div class="mission-card values-card">
-            <span class="mission-label">Our Values</span>
-            <p>{coreValues}</p>
-          </div>
-        </div>
-      </div>
-    </section>
+  <!-- Impact Quote -->
+  <section class="impact-quote">
+    <div class="container">
+      <blockquote>"Every contribution, no matter the size, creates real change in Isingiro District."</blockquote>
+      <a href="/get-involved" class="btn btn-accent">Join Us Today</a>
+    </div>
+  </section>
 
-    <section class="cta-section">
-      <div class="container">
-        <h2>Join Us in Making a Difference</h2>
-        <p>Your support can help us continue our work in Isingiro District. Whether through donations, volunteering, or spreading the word, every contribution matters.</p>
-        <a href="/get-involved" class="cta-button">Get Involved Today <span>→</span></a>
+  <!-- News Preview -->
+  <section class="news-preview">
+    <div class="container">
+      <div class="section-header">
+        <h2>Latest from the Field</h2>
+        <a href="/news" class="view-all">View All News <span>→</span></a>
       </div>
-    </section>
-  </div>
+      <div class="news-grid">
+        {newsItems.map(news => (
+          <article class="news-card">
+            <div class="news-image">
+              <div class="image-placeholder"><span>{news.category}</span></div>
+            </div>
+            <div class="news-content">
+              <span class="news-category">{news.category}</span>
+              <span class="news-date">{news.date}</span>
+              <h3>{news.title}</h3>
+              <p>{news.excerpt}</p>
+              <a href="/news" class="read-more">Read More <span>→</span></a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
 </Layout>
 
 <style>
+  /* Hero */
   .hero {
     position: relative;
-    height: 600px;
-    background-image: url('/foundation.jpg');
-    background-size: cover;
-    background-position: center;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    background: linear-gradient(135deg, #1B4332 0%, #2D6A4F 100%);
+    overflow: hidden;
   }
 
-  .hero-overlay {
+  .hero-gradient {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(45, 106, 79, 0.9) 0%, rgba(27, 67, 50, 0.85) 100%);
+    background: radial-gradient(ellipse at 30% 20%, rgba(233, 162, 59, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 80%, rgba(45, 106, 79, 0.3) 0%, transparent 50%);
+  }
+
+  .hero-bg-pattern {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.5;
   }
 
   .hero-content {
     position: relative;
     z-index: 1;
     text-align: center;
-    max-width: 800px;
-    padding: 0 1.5rem;
+    max-width: 900px;
+    padding: 0 2rem;
+  }
+
+  .hero-label {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #E9A23B;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 1.5rem;
   }
 
   .hero h1 {
     color: #FFFFFF;
-    font-size: 3.5rem;
+    font-size: 4rem;
     font-weight: 700;
+    line-height: 1.1;
     margin-bottom: 1.5rem;
-    line-height: 1.2;
-    font-family: 'Playfair Display', serif;
   }
 
-  .hero p {
-    color: #E5E7EB;
-    font-size: 1.35rem;
-    margin-bottom: 2.5rem;
+  .hero-subtitle {
+    font-size: 1rem;
+    color: #E9A23B;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    margin-bottom: 3rem;
   }
 
-  .hero-cta {
-    display: inline-block;
-    background-color: #F4A261;
-    color: #1A1A1A;
-    padding: 1rem 2.5rem;
-    border-radius: 0.75rem;
-    font-size: 1.1rem;
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.875rem 2rem;
+    border-radius: 9999px;
     font-weight: 600;
+    font-size: 1rem;
     text-decoration: none;
     transition: all 0.3s ease;
   }
 
-  .hero-cta:hover {
-    background-color: #E76F51;
+  .btn-primary {
+    background-color: #2D6A4F;
     color: #FFFFFF;
-    transform: scale(1.05);
   }
 
-  .warm-bg {
-    background: linear-gradient(-45deg, #fff5eb, #fef8f0, #f0e6d6, #e8ddd0);
-    background-size: 400% 400%;
-    animation: warmShift 18s ease infinite;
+  .btn-primary:hover {
+    background-color: #1B4332;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(45, 106, 79, 0.4);
   }
 
-  @keyframes warmShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+  .btn-outline {
+    background-color: transparent;
+    color: #FFFFFF;
+    border: 2px solid #FFFFFF;
   }
 
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
+  .btn-outline:hover {
+    background-color: #FFFFFF;
+    color: #111827;
   }
 
-  .about-section {
-    padding: 5rem 0;
+  .scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .scroll-arrow {
+    width: 24px;
+    height: 24px;
+    border-right: 2px solid rgba(255, 255, 255, 0.6);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.6);
+    transform: rotate(45deg);
+    animation: scrollBounce 2s infinite;
+  }
+
+  @keyframes scrollBounce {
+    0%, 100% { transform: rotate(45deg) translateY(0); opacity: 0.6; }
+    50% { transform: rotate(45deg) translate(5px, 5px); opacity: 1; }
+  }
+
+  /* Stats Bar */
+  .stats-bar {
+    background-color: #2D6A4F;
+    padding: 3rem 0;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #FFFFFF;
+  }
+
+  .stat-label {
+    font-size: 0.9rem;
+    color: #E9A23B;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* About Preview */
+  .about-preview {
+    background-color: #F9F7F4;
+    padding: 6rem 0;
   }
 
   .about-grid {
@@ -225,25 +320,52 @@ const workAreas = [
     align-items: center;
   }
 
+  .about-image .image-placeholder {
+    position: relative;
+    aspect-ratio: 4/3;
+    background: linear-gradient(135deg, #2D6A4F 0%, #E9A23B 100%);
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .about-image .corner-accent {
+    position: absolute;
+    top: -1rem;
+    right: -1rem;
+    width: 4rem;
+    height: 4rem;
+    background-color: #E9A23B;
+    border-radius: 1rem;
+    opacity: 0.3;
+  }
+
+  .about-image span {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+
   .section-label {
     display: block;
     font-size: 0.85rem;
     font-weight: 600;
-    color: #2D6A4F;
+    color: #E9A23B;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
   }
 
   .about-text h2 {
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
-    color: #1A1A1A;
+    line-height: 1.2;
   }
 
   .about-text p {
-    font-size: 1.15rem;
-    color: #525252;
+    font-size: 1.125rem;
+    color: #4B5563;
     line-height: 1.8;
     margin-bottom: 1.5rem;
   }
@@ -251,75 +373,32 @@ const workAreas = [
   .learn-more {
     color: #2D6A4F;
     font-weight: 600;
-    text-decoration: none;
     display: inline-flex;
     align-items: center;
-    transition: color 0.2s;
   }
 
-  .learn-more:hover {
-    color: #1B4332;
-  }
+  .learn-more span { margin-left: 0.5rem; }
 
-  .learn-more span {
-    margin-left: 0.5rem;
-  }
-
-  .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-  }
-
-  .stat-card {
-    background-color: #FFFFFF;
-    padding: 1.75rem;
-    border-radius: 1rem;
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.04);
-    border: 1px solid #E5E7EB;
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-
-  .stat-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
-  }
-
-  .stat-icon {
-    font-size: 1.75rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .stat-number {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #2D6A4F;
-  }
-
-  .stat-label {
-    color: #6B7280;
-    font-size: 0.9rem;
-    margin-top: 0.25rem;
-  }
-
+  /* Programs Section */
   .programs-section {
-    padding: 5rem 0;
+    background-color: #111827;
+    padding: 6rem 0;
   }
 
-  .section-header {
+  .programs-section .section-header {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 4rem;
   }
 
-  .section-header h2 {
+  .programs-section h2 {
+    color: #FFFFFF;
     font-size: 2.5rem;
-    margin: 0.5rem 0 1rem;
+    margin-bottom: 1rem;
   }
 
-  .section-header p {
-    font-size: 1.15rem;
-    color: #525252;
+  .programs-section p {
+    color: #9CA3AF;
+    font-size: 1.125rem;
     max-width: 600px;
     margin: 0 auto;
   }
@@ -331,162 +410,191 @@ const workAreas = [
   }
 
   .program-card {
-    background-color: #FFFFFF;
+    background-color: #1F2937;
     padding: 2rem;
     border-radius: 1rem;
-    border: 1px solid #E5E7EB;
     transition: all 0.3s ease;
   }
 
   .program-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   }
 
   .program-icon {
-    width: 56px;
-    height: 56px;
-    background-color: #E8F5EE;
-    border-radius: 0.75rem;
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, #374151 0%, #1F2937 100%);
+    border-radius: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 1.5rem;
-    transition: background-color 0.3s;
-  }
-
-  .program-card:hover .program-icon {
-    background-color: #D1EAD8;
   }
 
   .program-icon svg {
-    width: 28px;
-    height: 28px;
-    color: #2D6A4F;
+    width: 32px;
+    height: 32px;
+    color: #E9A23B;
   }
 
   .program-card h3 {
-    font-size: 1.35rem;
+    color: #FFFFFF;
+    font-size: 1.5rem;
     margin-bottom: 0.75rem;
   }
 
   .program-card p {
-    color: #525252;
+    color: #9CA3AF;
     line-height: 1.7;
     margin-bottom: 1rem;
   }
 
-  .mission-section {
-    padding: 4rem 0;
+  .program-card .learn-more {
+    color: #E9A23B;
   }
 
-  .mission-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-  }
-
-  .mission-card {
-    background-color: #FFFFFF;
-    padding: 2rem;
-    border-radius: 1rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
-    border-left: 4px solid #2D6A4F;
-  }
-
-  .mission-card.values-card {
-    border-left-color: #40916C;
-    background-color: #E8F5EE;
-  }
-
-  .mission-label {
-    display: block;
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: #6B7280;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 0.75rem;
-  }
-
-  .mission-card p {
-    color: #404040;
-    line-height: 1.7;
-    margin: 0;
-  }
-
-  .cta-section {
-    padding: 5rem 0;
-    background-color: #E8F5EE;
+  /* Impact Quote */
+  .impact-quote {
+    background: linear-gradient(135deg, #2D6A4F 0%, #1B4332 100%);
+    padding: 6rem 0;
     text-align: center;
   }
 
-  .cta-section h2 {
-    font-size: 2.25rem;
-    margin-bottom: 1rem;
-  }
-
-  .cta-section p {
-    font-size: 1.15rem;
-    color: #525252;
-    max-width: 650px;
-    margin: 0 auto 2rem;
-  }
-
-  .cta-button {
-    display: inline-block;
-    background-color: #2D6A4F;
+  .impact-quote blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-style: italic;
     color: #FFFFFF;
-    padding: 1rem 2rem;
-    border-radius: 0.75rem;
-    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    line-height: 1.5;
+  }
+
+  .btn-accent {
+    background-color: #E9A23B;
+    color: #111827;
+  }
+
+  .btn-accent:hover {
+    background-color: #D4802E;
+    color: #FFFFFF;
+    transform: translateY(-2px);
+  }
+
+  /* News Preview */
+  .news-preview {
+    background-color: #F9F7F4;
+    padding: 6rem 0;
+  }
+
+  .news-preview .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+  }
+
+  .view-all {
+    color: #2D6A4F;
     font-weight: 600;
-    text-decoration: none;
+  }
+
+  .view-all span { margin-left: 0.5rem; }
+
+  .news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .news-card {
+    background-color: #FFFFFF;
+    border-radius: 1rem;
+    overflow: hidden;
     transition: all 0.3s ease;
   }
 
-  .cta-button:hover {
-    background-color: #1B4332;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(45, 106, 79, 0.3);
+  .news-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   }
 
-  .cta-button span {
-    margin-left: 0.5rem;
+  .news-image .image-placeholder {
+    aspect-ratio: 16/9;
+    background: linear-gradient(135deg, #2D6A4F 0%, #E9A23B 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
+  .news-image span {
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .news-content {
+    padding: 1.5rem;
+  }
+
+  .news-category {
+    display: inline-block;
+    background-color: #E8F5EE;
+    color: #2D6A4F;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    margin-right: 0.5rem;
+  }
+
+  .news-date {
+    font-size: 0.85rem;
+    color: #E9A23B;
+  }
+
+  .news-content h3 {
+    font-size: 1.125rem;
+    margin: 0.75rem 0 0.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .news-content p {
+    color: #6B7280;
+    font-size: 0.9rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+
+  .read-more {
+    color: #2D6A4F;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .read-more span { margin-left: 0.25rem; }
+
+  /* Mobile */
   @media (max-width: 768px) {
-    .hero {
-      height: 500px;
-    }
-
-    .hero h1 {
-      font-size: 2rem;
-    }
-
-    .hero p {
-      font-size: 1.1rem;
-    }
-
-    .about-grid {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-
-    .stats-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .programs-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .mission-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .cta-section h2 {
-      font-size: 1.75rem;
-    }
+    .hero { min-height: 100vh; }
+    .hero h1 { font-size: 2.5rem; }
+    .hero-buttons { flex-direction: column; align-items: center; }
+    .btn { width: 100%; max-width: 280px; justify-content: center; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+    .stat-number { font-size: 2rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .about-text h2 { font-size: 1.75rem; }
+    .programs-grid { grid-template-columns: 1fr; }
+    .impact-quote blockquote { font-size: 1.5rem; }
+    .news-grid { grid-template-columns: 1fr; }
   }
 </style>

@@ -1,129 +1,140 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const volunteerRoles = [
+  "Teaching & Education Support",
+  "Healthcare Assistance",
+  "Community Outreach",
+  "Administrative Support",
+  "Fundraising & Events",
+  "Remote/Mental Health Support"
+];
 ---
 
 <Layout title="Get Involved">
-  <section class="page-header">
-    <div class="container">
+  <!-- Hero -->
+  <section class="hero-half">
+    <div class="hero-gradient"></div>
+    <div class="hero-content">
+      <nav class="breadcrumb">Home &gt; Get Involved</nav>
       <h1>Get Involved</h1>
-      <p>Join us in making a difference in Isingiro District. Your support matters.</p>
+      <p>Join us in making a difference in Isingiro District.</p>
     </div>
   </section>
 
-  <section class="section donate-section">
+  <!-- Donate Section -->
+  <section class="donate-section">
     <div class="container">
-      <div class="donation-info-card">
-        <h2>How to Donate</h2>
-        <p class="donation-intro">Your contribution goes directly to communities in Isingiro District. Choose the method that works best for you.</p>
-        
-        <div class="donation-methods">
-          <div class="donation-method">
-            <h3>Bank Transfer (Uganda)</h3>
-            <ul class="bank-details">
-              <li><strong>Bank:</strong> [Insert Bank Name]</li>
-              <li><strong>Account Name:</strong> Kato Laban Foundation</li>
-              <li><strong>Account Number:</strong> [Insert Account Number]</li>
-              <li><strong>Branch:</strong> [Insert Branch]</li>
-              <li><strong>SWIFT/BIC:</strong> [Insert if applicable]</li>
-            </ul>
-          </div>
-          
-          <div class="donation-method">
-            <h3>Mobile Money (MTN Uganda)</h3>
-            <ul class="bank-details">
-              <li><strong>MTN MoMo Number:</strong> [Insert Number]</li>
-              <li><strong>Name:</strong> [Insert Registered Name]</li>
-              <li><strong>Reference:</strong> Your name + "Donation"</li>
-            </ul>
-          </div>
-          
-          <div class="donation-method">
-            <h3>International Transfers</h3>
-            <p>Use the bank SWIFT details above.</p>
-            <p class="donation-note">For large gifts, contact us first at <a href="mailto:contact@katolabanfoundation.org">contact@katolabanfoundation.org</a> to ensure proper acknowledgment and receipt.</p>
-          </div>
+      <div class="donate-header">
+        <h2>Support Our Work</h2>
+        <p>Your contribution goes directly to communities in Isingiro District.</p>
+      </div>
+      <div class="donate-methods">
+        <div class="donate-card">
+          <div class="method-icon">🏦</div>
+          <h3>Bank Transfer (Uganda)</h3>
+          <ul class="bank-details">
+            <li><strong>Bank:</strong> [Insert Bank Name]</li>
+            <li><strong>Account Name:</strong> Kato Laban Foundation</li>
+            <li><strong>Account Number:</strong> [Insert Account Number]</li>
+            <li><strong>Branch:</strong> [Insert Branch]</li>
+            <li><strong>SWIFT/BIC:</strong> [Insert if applicable]</li>
+          </ul>
         </div>
-        
-        <p class="donation-confirmation">After donating, please send your proof of payment to <a href="mailto:contact@katolabanfoundation.org">contact@katolabanfoundation.org</a> so we can acknowledge your gift and issue a receipt.</p>
+        <div class="donate-card">
+          <div class="method-icon">📱</div>
+          <h3>Mobile Money (MTN Uganda)</h3>
+          <ul class="bank-details">
+            <li><strong>MTN MoMo Number:</strong> [Insert Number]</li>
+            <li><strong>Name:</strong> [Insert Registered Name]</li>
+            <li><strong>Reference:</strong> Your name + "Donation"</li>
+          </ul>
+        </div>
+        <div class="donate-card">
+          <div class="method-icon">🌍</div>
+          <h3>International Transfer</h3>
+          <p>Use the bank SWIFT details above.</p>
+          <p class="donate-note">For large gifts, contact us first at <a href="mailto:contact@katolabanfoundation.org">contact@katolabanfoundation.org</a></p>
+        </div>
+      </div>
+      <div class="donate-confirm">
+        <p>After donating, please send your proof of payment to <a href="mailto:contact@katolabanfoundation.org">contact@katolabanfoundation.org</a> for acknowledgment and receipt.</p>
       </div>
     </div>
   </section>
 
-  <section class="section volunteer-section">
+  <!-- Volunteer Section -->
+  <section class="volunteer-section">
     <div class="container">
-      <div class="action-grid">
-        <div class="action-card">
-          <h2>Volunteer</h2>
+      <div class="volunteer-grid">
+        <div class="volunteer-text">
+          <span class="section-label">Volunteer</span>
+          <h2>Your Skills Can Change Lives</h2>
           <p>Your time and skills are valuable. We welcome volunteers who want to make a difference, whether locally in Isingiro District or remotely supporting our programs.</p>
-          <p>Volunteer opportunities include teaching, healthcare support, administrative work, and more.</p>
-          <a href="#volunteer-form" class="btn btn-secondary">Sign Up to Volunteer</a>
+          <ul class="volunteer-roles">
+            {volunteerRoles.map(role => (
+              <li>{role}</li>
+            ))}
+          </ul>
+        </div>
+        <div class="volunteer-form-wrapper">
+          <form class="volunteer-form" name="volunteer" method="POST" data-netlify="true">
+            <input type="hidden" name="form-name" value="volunteer" />
+            <h3>Volunteer With Us</h3>
+            <p>Fill out the form below. We'll get back to you within one week.</p>
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" />
+            </div>
+            <div class="form-group">
+              <label for="interest">Area of Interest</label>
+              <select id="interest" name="interest">
+                <option value="">Select an option</option>
+                {volunteerRoles.map(role => (
+                  <option value={role}>{role}</option>
+                ))}
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="4" placeholder="Tell us about yourself..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section volunteer-form-section" id="volunteer-form">
+  <!-- Other Ways -->
+  <section class="other-ways">
     <div class="container">
-      <div class="form-content">
-        <h2>Volunteer With Us</h2>
-        <p>Fill out the form below to express your interest in volunteering. We will get back to you within one week.</p>
-        
-        <form class="volunteer-form" name="volunteer" method="POST" data-netlify="true">
-          <input type="hidden" name="form-name" value="volunteer" />
-          
-          <div class="form-group">
-            <label for="name">Full Name</label>
-            <input type="text" id="name" name="name" required />
-          </div>
-          
-          <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" required />
-          </div>
-          
-          <div class="form-group">
-            <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" name="phone" />
-          </div>
-          
-          <div class="form-group">
-            <label for="interest">Area of Interest</label>
-            <select id="interest" name="interest">
-              <option value="">Select an option</option>
-              <option value="teaching">Teaching</option>
-              <option value="healthcare">Healthcare</option>
-              <option value="administration">Administration</option>
-              <option value="outreach">Community Outreach</option>
-              <option value="fundraising">Fundraising</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-          
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" placeholder="Tell us about yourself and why you want to volunteer..."></textarea>
-          </div>
-          
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+      <div class="section-header">
+        <h2>Other Ways to Help</h2>
       </div>
-    </div>
-  </section>
-
-  <section class="section contact-section">
-    <div class="container">
-      <div class="contact-grid">
-        <div class="contact-card">
-          <h3>Phone</h3>
-          <p><a href="tel:+256784332800">+256 784 332 800</a></p>
+      <div class="ways-grid">
+        <div class="way-card">
+          <div class="way-icon">📢</div>
+          <h3>Spread the Word</h3>
+          <p>Share our mission with your network. Every share helps us reach more supporters.</p>
         </div>
-        <div class="contact-card">
-          <h3>Email</h3>
-          <p><a href="mailto:contact@katolabanfoundation.org">contact@katolabanfoundation.org</a></p>
+        <div class="way-card">
+          <div class="way-icon">🤝</div>
+          <h3>Partner With Us</h3>
+          <p>Organizations can collaborate. Contact us to explore partnership opportunities.</p>
         </div>
-        <div class="contact-card">
-          <h3>Address</h3>
-          <p>Kikagate Town Council<br />Isingiro District<br />Uganda</p>
+        <div class="way-card">
+          <div class="way-icon">🙏</div>
+          <h3>Pray For Us</h3>
+          <p>Your prayers sustain our work. Join our prayer community digitally.</p>
         </div>
       </div>
     </div>
@@ -131,260 +142,331 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <style>
-  .page-header {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
-    padding: var(--spacing-3xl) 0;
-    text-align: center;
+  .hero-half {
     position: relative;
+    min-height: 60vh;
+    background: linear-gradient(135deg, #1B4332 0%, #2D6A4F 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .page-header::before {
-    content: '';
+  .hero-gradient {
     position: absolute;
     inset: 0;
-    background-image: url('/foundation.jpg');
-    background-size: cover;
-    background-position: center;
-    opacity: 0.3;
+    background: radial-gradient(ellipse at 30% 20%, rgba(233, 162, 59, 0.15) 0%, transparent 50%);
   }
 
-  .page-header > * {
+  .hero-content {
     position: relative;
     z-index: 1;
+    text-align: center;
+    max-width: 700px;
+    padding: 0 2rem;
   }
 
-  .page-header h1 {
-    color: var(--color-white);
-    margin-bottom: var(--spacing-md);
+  .breadcrumb {
+    font-size: 0.9rem;
+    color: #E9A23B;
+    margin-bottom: 1.5rem;
   }
 
-  .page-header p {
-    color: var(--color-neutral-100);
-    font-size: var(--font-size-lg);
-    max-width: 600px;
+  .hero-half h1 {
+    color: #FFFFFF;
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-half p {
+    color: #D1D5DB;
+    font-size: 1.25rem;
+  }
+
+  .container {
+    max-width: 1280px;
     margin: 0 auto;
+    padding: 0 2rem;
   }
 
+  /* Donate Section */
   .donate-section {
-    background-color: var(--color-neutral-50);
+    background-color: #F9F7F4;
+    padding: 6rem 0;
   }
 
-  .donation-info-card {
-    background-color: var(--color-white);
-    padding: var(--spacing-2xl);
-    border-radius: var(--border-radius-lg);
-    box-shadow: var(--shadow-md);
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .donation-info-card h2 {
-    color: var(--color-primary);
+  .donate-header {
     text-align: center;
-    margin-bottom: var(--spacing-md);
+    margin-bottom: 3rem;
   }
 
-  .donation-intro {
-    text-align: center;
-    color: var(--color-neutral-600);
-    font-size: var(--font-size-lg);
-    margin-bottom: var(--spacing-xl);
+  .donate-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
   }
 
-  .donation-methods {
+  .donate-header p {
+    color: #6B7280;
+    font-size: 1.1rem;
+  }
+
+  .donate-methods {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacing-lg);
-    margin-bottom: var(--spacing-xl);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
   }
 
-  .donation-method {
-    background-color: var(--color-neutral-50);
-    padding: var(--spacing-lg);
-    border-radius: var(--border-radius-md);
-    border-top: 3px solid var(--color-primary);
+  .donate-card {
+    background-color: #FFFFFF;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    border-top: 3px solid #2D6A4F;
   }
 
-  .donation-method h3 {
-    color: var(--color-primary);
-    font-size: var(--font-size-lg);
-    margin-bottom: var(--spacing-md);
+  .method-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
   }
 
-  .donation-method .bank-details {
+  .donate-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .bank-details {
     list-style: none;
     padding: 0;
     margin: 0;
   }
 
-  .donation-method .bank-details li {
-    color: var(--color-neutral-700);
-    margin-bottom: var(--spacing-xs);
+  .bank-details li {
+    color: #4B5563;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #F3F4F6;
+    font-size: 0.95rem;
   }
 
-  .donation-method p {
-    color: var(--color-neutral-600);
-    margin-bottom: var(--spacing-sm);
+  .donate-card > p {
+    color: #6B7280;
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
   }
 
-  .donation-note {
-    font-size: var(--font-size-sm);
-    color: var(--color-neutral-500);
+  .donate-note {
+    font-size: 0.85rem;
+    color: #9CA3AF;
     font-style: italic;
   }
 
-  .donation-confirmation {
-    text-align: center;
-    padding: var(--spacing-lg);
-    background-color: var(--color-neutral-50);
-    border-radius: var(--border-radius-md);
-    color: var(--color-neutral-700);
-    font-weight: 500;
-  }
-
-  .donation-confirmation a {
-    color: var(--color-primary);
+  .donate-note a {
+    color: #2D6A4F;
     font-weight: 600;
   }
 
+  .donate-confirm {
+    background-color: #FEF3C7;
+    border: 2px solid #E9A23B;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .donate-confirm p {
+    color: #92400E;
+    font-weight: 500;
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  .donate-confirm a {
+    color: #111827;
+    font-weight: 700;
+  }
+
+  /* Volunteer Section */
   .volunteer-section {
-    background-color: var(--color-neutral-100);
+    background-color: #111827;
+    padding: 6rem 0;
   }
 
-  .action-grid {
+  .volunteer-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--spacing-xl);
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
   }
 
-  .action-card {
-    background-color: var(--color-white);
-    padding: var(--spacing-2xl);
-    border-radius: var(--border-radius-lg);
-    box-shadow: var(--shadow-md);
-    text-align: center;
+  .volunteer-text .section-label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #E9A23B;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.75rem;
   }
 
-  .action-card h2 {
-    color: var(--color-primary);
-    margin-bottom: var(--spacing-md);
+  .volunteer-text h2 {
+    color: #FFFFFF;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
   }
 
-  .action-card p {
-    color: var(--color-neutral-600);
+  .volunteer-text > p {
+    color: #D1D5DB;
+    font-size: 1.1rem;
     line-height: 1.7;
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: 1.5rem;
   }
 
-  .volunteer-form-section {
-    background-color: var(--color-white);
+  .volunteer-roles {
+    list-style: none;
+    padding: 0;
   }
 
-  .form-content {
-    max-width: 600px;
-    margin: 0 auto;
+  .volunteer-roles li {
+    color: #E5E7EB;
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
   }
 
-  .form-content h2 {
-    text-align: center;
-    margin-bottom: var(--spacing-md);
+  .volunteer-roles li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #E9A23B;
+    font-size: 1.5rem;
+    line-height: 1rem;
   }
 
-  .form-content > p {
-    text-align: center;
-    color: var(--color-neutral-600);
-    margin-bottom: var(--spacing-xl);
+  .volunteer-form-wrapper {
+    background-color: #1F2937;
+    padding: 2.5rem;
+    border-radius: 1rem;
   }
 
-  .volunteer-form {
-    background-color: var(--color-neutral-50);
-    padding: var(--spacing-xl);
-    border-radius: var(--border-radius-lg);
+  .volunteer-form h3 {
+    color: #FFFFFF;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .volunteer-form > p {
+    color: #9CA3AF;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
   }
 
   .form-group {
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: 1.25rem;
   }
 
   .form-group label {
     display: block;
+    color: #D1D5DB;
+    font-size: 0.9rem;
     font-weight: 500;
-    margin-bottom: var(--spacing-xs);
-    color: var(--color-neutral-700);
+    margin-bottom: 0.5rem;
   }
 
   .form-group input,
   .form-group select,
   .form-group textarea {
     width: 100%;
-    padding: var(--spacing-sm) var(--spacing-md);
-    border: 1px solid var(--color-neutral-300);
-    border-radius: var(--border-radius-md);
-    background-color: var(--color-white);
-    transition: border-color var(--transition-fast);
+    padding: 0.75rem 1rem;
+    border: 1px solid #374151;
+    border-radius: 0.5rem;
+    background-color: #111827;
+    color: #FFFFFF;
+    font-size: 1rem;
+    transition: border-color 0.2s;
   }
 
   .form-group input:focus,
   .form-group select:focus,
   .form-group textarea:focus {
     outline: none;
-    border-color: var(--color-primary);
+    border-color: #E9A23B;
   }
 
-  .form-group textarea {
-    resize: vertical;
-    min-height: 120px;
-  }
-
-  .volunteer-form .btn {
+  .btn {
     width: 100%;
+    padding: 0.875rem 2rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
   }
 
-  .contact-section {
-    background-color: var(--color-neutral-100);
+  .btn-primary {
+    background-color: #2D6A4F;
+    color: #FFFFFF;
   }
 
-  .contact-grid {
+  .btn-primary:hover {
+    background-color: #1B4332;
+    transform: translateY(-2px);
+  }
+
+  /* Other Ways */
+  .other-ways {
+    background-color: #F9F7F4;
+    padding: 6rem 0;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .section-header h2 {
+    font-size: 2.5rem;
+  }
+
+  .ways-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacing-xl);
+    gap: 1.5rem;
   }
 
-  .contact-card {
+  .way-card {
+    background-color: #FFFFFF;
+    padding: 2rem;
+    border-radius: 1rem;
     text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
   }
 
-  .contact-card h3 {
-    color: var(--color-primary);
-    margin-bottom: var(--spacing-sm);
+  .way-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
   }
 
-  .contact-card p {
-    color: var(--color-neutral-600);
-    margin: 0;
+  .way-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
   }
 
-  .contact-card a {
-    color: var(--color-primary);
-    font-weight: 500;
+  .way-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .way-card p {
+    color: #6B7280;
+    font-size: 0.95rem;
   }
 
   @media (max-width: 768px) {
-    .page-header {
-      padding: var(--spacing-2xl) 0;
-    }
-
-    .donation-methods {
-      grid-template-columns: 1fr;
-    }
-
-    .action-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .contact-grid {
-      grid-template-columns: 1fr;
-      gap: var(--spacing-lg);
-    }
+    .hero-half { min-height: 50vh; }
+    .hero-half h1 { font-size: 2.25rem; }
+    .donate-methods { grid-template-columns: 1fr; }
+    .volunteer-grid { grid-template-columns: 1fr; }
+    .ways-grid { grid-template-columns: 1fr; }
   }
 </style>

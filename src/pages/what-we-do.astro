@@ -3,274 +3,393 @@ import Layout from '../layouts/Layout.astro';
 
 const programs = [
   {
-    title: "Health Outcomes",
+    label: "Program 01",
+    title: "Health & Wellbeing",
     description: "We are dedicated to improving health outcomes for communities in Isingiro District through comprehensive healthcare programs and initiatives.",
-    focusAreas: [
-      {
-        title: "Healthcare Access",
-        description: "We work to expand access to healthcare services for rural and underserved communities, partnering with local health centers to provide essential medical care."
-      },
-      {
-        title: "Nutrition Programs",
-        description: "Our nutrition initiatives target malnutrition particularly among children and pregnant women, providing supplementary foods and education on balanced diets."
-      },
-      {
-        title: "Health Education",
-        description: "We deliver health education programs on disease prevention, hygiene practices, and family health, empowering community members with knowledge to protect themselves and their families."
-      },
-      {
-        title: "Mobile Health Clinics",
-        description: "Our mobile health clinics bring essential medical services directly to remote villages, ensuring that geography does not prevent access to healthcare."
-      }
+    items: [
+      "Healthcare Access — Partnering with local health centers",
+      "Nutrition Programs — Targeting malnutrition",
+      "Health Education — Disease prevention",
+      "Mobile Health Clinics — Remote village outreach"
     ]
   },
   {
-    title: "Quality Education",
-    description: "We believe that education is the foundation for sustainable development. Our education programs focus on expanding access to quality learning opportunities for all children.",
-    focusAreas: [
-      {
-        title: "School Support",
-        description: "We support local schools with infrastructure improvements, learning materials, and resources to create conducive learning environments for students."
-      },
-      {
-        title: "Teacher Training",
-        description: "Our professional development programs for teachers focus on modern teaching methodologies and student centered learning approaches."
-      },
-      {
-        title: "Student Scholarships",
-        description: "We provide scholarships to outstanding students from disadvantaged backgrounds, enabling them to continue their education beyond primary school."
-      },
-      {
-        title: "Literacy Programs",
-        description: "Our adult literacy programs empower community members with reading and writing skills, opening new opportunities for employment and self improvement."
-      }
+    label: "Program 02",
+    title: "Education Access",
+    description: "We believe that education is the foundation for sustainable development. Our education programs focus on expanding access to quality learning opportunities.",
+    items: [
+      "School Support — Infrastructure and materials",
+      "Teacher Training — Professional development",
+      "Student Scholarships — Enabling continued education",
+      "Literacy Programs — Adult education"
     ]
   },
   {
-    title: "Climate Education and Justice",
+    label: "Program 03",
+    title: "Climate Justice",
     description: "We promote climate education and environmental stewardship while building community resilience to climate change impacts.",
-    focusAreas: [
-      {
-        title: "Climate Awareness",
-        description: "We educate communities about climate change, its causes, and its impacts, helping people understand why adaptation is essential."
-      },
-      {
-        title: "Sustainable Agriculture",
-        description: "Our training programs teach farmers climate smart agricultural practices that increase productivity while protecting the environment."
-      },
-      {
-        title: " reforestation",
-        description: "We lead community tree planting initiatives to restore degraded lands and create sustainable sources of firewood and timber."
-      },
-      {
-        title: "Disaster Preparedness",
-        description: "We build community capacity to prepare for and respond to climate related disasters such as floods and droughts."
-      }
+    items: [
+      "Climate Awareness — Education programs",
+      "Sustainable Agriculture — Climate-smart practices",
+      "Reforestation — Community tree planting",
+      "Disaster Preparedness — Building capacity"
     ]
   }
+];
+
+const impactStats = [
+  { number: "3", label: "Schools Supported" },
+  { number: "500+", label: "Health Visits" },
+  { number: "200+", label: "Trees Planted" }
 ];
 ---
 
 <Layout title="What We Do">
-  <section class="page-header">
-    <div class="container">
-      <h1>What We Do</h1>
-      <p>Our programs address health, education, and climate challenges in Isingiro District.</p>
+  <!-- Hero -->
+  <section class="hero-half">
+    <div class="hero-gradient"></div>
+    <div class="hero-content">
+      <nav class="breadcrumb">Home &gt; What We Do</nav>
+      <h1>Our Programs</h1>
+      <p>Our work addresses health, education, and climate challenges in Isingiro District.</p>
     </div>
   </section>
 
-  <section class="section intro-section">
+  <!-- Program 1: Health -->
+  <section class="program-section">
     <div class="container">
-      <div class="intro-content">
-        <p>At Kato Laban Foundation, our work focuses on three interconnected areas that are essential for community development. We believe that health, education, and environmental sustainability are all linked, and improving one area positively affects the others.</p>
-        <p>Every program we develop is community led, ensuring that our initiatives address real needs and create lasting change.</p>
-      </div>
-    </div>
-  </section>
-
-  {programs.map((program, index) => (
-    <section class="section program-section">
-      <div class="container">
-        <div class="program-header">
-          <div class="program-number">{index + 1}</div>
-          <div>
-            <h2>{program.title}</h2>
-            <p>{program.description}</p>
+      <div class="program-grid">
+        <div class="program-image">
+          <div class="image-placeholder">
+            <span>Health Programs</span>
+            <div class="corner-accent"></div>
           </div>
         </div>
-        <div class="focus-grid">
-          {program.focusAreas.map(focus => (
-            <div class="focus-card">
-              <h3>{focus.title}</h3>
-              <p>{focus.description}</p>
-            </div>
-          ))}
+        <div class="program-content">
+          <span class="program-label">Program 01</span>
+          <h2>Health & Wellbeing</h2>
+          <p>{programs[0].description}</p>
+          <ul class="program-items">
+            {programs[0].items.map(item => (
+              <li>{item}</li>
+            ))}
+          </ul>
         </div>
       </div>
-    </section>
-  ))}
+    </div>
+  </section>
 
-  <section class="section cta-section">
+  <!-- Program 2: Education -->
+  <section class="program-section dark">
     <div class="container">
-      <div class="cta-content">
-        <h2>Support Our Work</h2>
-        <p>Your contribution can help us expand our programs and reach more communities in need. Join us in creating lasting positive change in Isingiro District.</p>
-        <a href="/get-involved" class="btn btn-accent">Get Involved</a>
+      <div class="program-grid reverse">
+        <div class="program-image">
+          <div class="image-placeholder">
+            <span>Education Programs</span>
+            <div class="corner-accent"></div>
+          </div>
+        </div>
+        <div class="program-content">
+          <span class="program-label">Program 02</span>
+          <h2>Education Access</h2>
+          <p>{programs[1].description}</p>
+          <ul class="program-items">
+            {programs[1].items.map(item => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
       </div>
+    </div>
+  </section>
+
+  <!-- Program 3: Climate -->
+  <section class="program-section">
+    <div class="container">
+      <div class="program-grid">
+        <div class="program-image">
+          <div class="image-placeholder">
+            <span>Climate Programs</span>
+            <div class="corner-accent"></div>
+          </div>
+        </div>
+        <div class="program-content">
+          <span class="program-label">Program 03</span>
+          <h2>Climate Justice</h2>
+          <p>{programs[2].description}</p>
+          <ul class="program-items">
+            {programs[2].items.map(item => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact Numbers -->
+  <section class="impact-stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span class="stat-number">3</span>
+          <span class="stat-label">Program Areas</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">1000+</span>
+          <span class="stat-label">Lives Impacted</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">3</span>
+          <span class="stat-label">Schools Supported</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">500+</span>
+          <span class="stat-label">Health Visits</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">200+</span>
+          <span class="stat-label">Trees Planted</span>
+        </div>
+      </div>
+      <p class="stats-note">// TODO: Replace with real impact data</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-strip">
+    <div class="container">
+      <p>Want to support these programs? <a href="/get-involved">Get Involved →</a></p>
     </div>
   </section>
 </Layout>
 
 <style>
-  .page-header {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
-    padding: var(--spacing-3xl) 0;
-    text-align: center;
+  .hero-half {
     position: relative;
-  }
-
-  .page-header::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url('/foundation.jpg');
-    background-size: cover;
-    background-position: center;
-    opacity: 0.3;
-  }
-
-  .page-header > * {
-    position: relative;
-    z-index: 1;
-  }
-
-  .page-header h1 {
-    color: var(--color-white);
-    margin-bottom: var(--spacing-md);
-  }
-
-  .page-header p {
-    color: var(--color-neutral-100);
-    font-size: var(--font-size-lg);
-    max-width: 600px;
-    margin: 0 auto;
-  }
-
-  .intro-section {
-    background-color: var(--color-neutral-50);
-  }
-
-  .intro-content {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-  }
-
-  .intro-content p {
-    font-size: var(--font-size-lg);
-    color: var(--color-neutral-700);
-    line-height: 1.8;
-  }
-
-  .program-section {
-    background-color: var(--color-white);
-  }
-
-  .program-header {
-    display: flex;
-    gap: var(--spacing-lg);
-    margin-bottom: var(--spacing-2xl);
-  }
-
-  .program-number {
-    width: 60px;
-    height: 60px;
-    background-color: var(--color-primary);
-    color: var(--color-white);
-    border-radius: var(--border-radius-full);
+    min-height: 60vh;
+    background: linear-gradient(135deg, #1B4332 0%, #2D6A4F 100%);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 700;
-    font-size: var(--font-size-xl);
-    flex-shrink: 0;
   }
 
-  .program-header h2 {
-    margin-bottom: var(--spacing-sm);
-    color: var(--color-primary);
+  .hero-gradient {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 20%, rgba(233, 162, 59, 0.15) 0%, transparent 50%);
   }
 
-  .program-header p {
-    color: var(--color-neutral-600);
-    font-size: var(--font-size-lg);
-    margin: 0;
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 700px;
+    padding: 0 2rem;
   }
 
-  .focus-grid {
+  .breadcrumb {
+    font-size: 0.9rem;
+    color: #E9A23B;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-half h1 {
+    color: #FFFFFF;
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-half p {
+    color: #D1D5DB;
+    font-size: 1.25rem;
+  }
+
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .program-section {
+    padding: 6rem 0;
+  }
+
+  .program-section.dark {
+    background-color: #111827;
+  }
+
+  .program-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--spacing-lg);
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
   }
 
-  .focus-card {
-    background-color: var(--color-neutral-50);
-    padding: var(--spacing-lg);
-    border-radius: var(--border-radius-md);
-    border-left: 3px solid var(--color-primary);
+  .program-grid.reverse {
+    direction: rtl;
   }
 
-  .focus-card h3 {
-    font-size: var(--font-size-lg);
-    margin-bottom: var(--spacing-sm);
+  .program-grid.reverse > * {
+    direction: ltr;
   }
 
-  .focus-card p {
-    color: var(--color-neutral-600);
-    margin: 0;
+  .program-image .image-placeholder {
+    position: relative;
+    aspect-ratio: 4/3;
+    background: linear-gradient(135deg, #2D6A4F 0%, #E9A23B 100%);
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .cta-section {
-    background-color: var(--color-neutral-100);
+  .corner-accent {
+    position: absolute;
+    top: -1rem;
+    right: -1rem;
+    width: 4rem;
+    height: 4rem;
+    background-color: #E9A23B;
+    border-radius: 1rem;
+    opacity: 0.3;
+  }
+
+  .program-image span {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+
+  .program-label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #E9A23B;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.75rem;
+  }
+
+  .program-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .program-section.dark .program-content h2 {
+    color: #FFFFFF;
+  }
+
+  .program-content p {
+    color: #4B5563;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .program-section.dark .program-content p {
+    color: #D1D5DB;
+  }
+
+  .program-items {
+    list-style: none;
+    padding: 0;
+  }
+
+  .program-items li {
+    color: #4B5563;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #E5E7EB;
+    padding-left: 1.5rem;
+    position: relative;
+  }
+
+  .program-items li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #2D6A4F;
+    font-weight: 600;
+  }
+
+  .program-section.dark .program-items li {
+    color: #D1D5DB;
+    border-bottom-color: #374151;
+  }
+
+  .program-section.dark .program-items li::before {
+    color: #E9A23B;
+  }
+
+  /* Impact Stats */
+  .impact-stats {
+    background-color: #2D6A4F;
+    padding: 4rem 0;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2rem;
     text-align: center;
   }
 
-  .cta-content {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: var(--spacing-2xl);
-    background-color: var(--color-white);
-    border-radius: var(--border-radius-lg);
-    box-shadow: var(--shadow-md);
+  .stat-item {
+    display: flex;
+    flex-direction: column;
   }
 
-  .cta-section h2 {
-    color: var(--color-primary);
-    margin-bottom: var(--spacing-md);
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #FFFFFF;
   }
 
-  .cta-section p {
-    color: var(--color-neutral-600);
-    margin-bottom: var(--spacing-xl);
-    font-size: var(--font-size-lg);
+  .stat-label {
+    font-size: 0.85rem;
+    color: #E9A23B;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 0.25rem;
+  }
+
+  .stats-note {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.85rem;
+    font-style: italic;
+    margin-top: 1.5rem;
+  }
+
+  /* CTA Strip */
+  .cta-strip {
+    background: linear-gradient(135deg, #E9A23B 0%, #D4802E 100%);
+    padding: 3rem 0;
+    text-align: center;
+  }
+
+  .cta-strip p {
+    font-size: 1.25rem;
+    color: #111827;
+    font-weight: 500;
+  }
+
+  .cta-strip a {
+    color: #111827;
+    text-decoration: underline;
+    font-weight: 700;
+  }
+
+  .cta-strip a:hover {
+    color: #FFFFFF;
   }
 
   @media (max-width: 768px) {
-    .page-header {
-      padding: var(--spacing-2xl) 0;
-    }
-
-    .program-header {
-      flex-direction: column;
-      text-align: center;
-    }
-
-    .program-number {
-      margin: 0 auto;
-    }
-
-    .focus-grid {
-      grid-template-columns: 1fr;
-    }
+    .hero-half { min-height: 50vh; }
+    .hero-half h1 { font-size: 2.25rem; }
+    .program-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .program-grid.reverse { direction: ltr; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
   }
 </style>

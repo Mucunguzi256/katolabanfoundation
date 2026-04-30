@@ -2,65 +2,62 @@
 import Layout from '../layouts/Layout.astro';
 
 const coreValues = [
-  {
-    title: "Giving a hand to another",
-    description: "We believe in the power of community support and helping those in need. Every action of kindness creates a ripple effect that strengthens our entire community."
-  },
-  {
-    title: "Resilience",
-    description: "We are committed to building resilience in the face of challenges. Through perseverance and determination, we overcome obstacles to create lasting change."
-  },
-  {
-    title: "Innovation",
-    description: "We embrace creative solutions and new approaches to address persistent problems. Innovation drives our ability to find better ways to serve our community."
-  },
-  {
-    title: "Prosperity for future generations",
-    description: "We work today to ensure a brighter tomorrow. Every program and initiative is designed with future generations in mind, creating sustainable pathways to prosperity."
-  }
+  { title: "Generosity", description: "We believe in the power of giving and community support to transform lives.", icon: "gift" },
+  { title: "Resilience", description: "We overcome challenges through perseverance and determination.", icon: "shield" },
+  { title: "Innovation", description: "We embrace creative solutions to address persistent problems.", icon: "lightbulb" },
+  { title: "Intergenerational Prosperity", description: "We work today to ensure a brighter tomorrow for future generations.", icon: "seedling" }
+];
+
+const teamMembers = [
+  { name: "Executive Director", title: "Leadership Team", initials: "KL" },
+  { name: "Program Manager", title: "Health Programs", initials: "PM" },
+  { name: "Education Lead", title: "Education Programs", initials: "EL" }
 ];
 ---
 
 <Layout title="About">
-  <section class="page-header">
-    <div class="container">
-      <h1>About Us</h1>
-      <p>Learn about our story, our mission, and the values that drive our work.</p>
+  <!-- Hero -->
+  <section class="hero-half">
+    <div class="hero-gradient"></div>
+    <div class="hero-content">
+      <nav class="breadcrumb">Home &gt; About</nav>
+      <h1>Who We Are</h1>
+      <p>Learn about our story, mission, and values driving change in Isingiro District.</p>
     </div>
   </section>
 
-  <section class="section">
+  <!-- Mission & Vision -->
+  <section class="mission-vision">
     <div class="container">
-      <div class="content-block">
-        <h2>Our Story</h2>
-        <p>Kato Laban Foundation was established with a clear vision: to empower communities in Isingiro District by providing knowledge and sustainable development that enhances a quality life for the most vulnerable populations.</p>
-        <p>Operating from Kikagate Town Council in Isingiro District, we have dedicated ourselves to improving health outcomes, expanding access to quality education, and promoting climate education and climate justice.</p>
-        <p>Our team works closely with local communities, understanding their unique challenges and strengths. We believe that sustainable change comes from within the community, and we are here to support that journey every step of the way.</p>
+      <div class="mv-grid">
+        <div class="mv-card dark">
+          <h2>Our Mission</h2>
+          <p>To empower communities in Isingiro District by providing knowledge and sustainable development that enhances a quality life for the most vulnerable populations.</p>
+        </div>
+        <div class="mv-card light">
+          <h2>Our Vision</h2>
+          <p>To build a thriving, healthy and well educated community where every individual has the opportunity to achieve their full potential.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="section location-section">
+  <!-- Values -->
+  <section class="values-section">
     <div class="container">
-      <div class="location-content">
-        <h2>Our Location</h2>
-        <p>We are based in Kikagate Town Council, Isingiro District, Uganda. This region presents both unique opportunities and challenges that shape our work.</p>
-        <p>Isingiro District is located in the southwestern part of Uganda, near the border with Tanzania. The district is predominantly rural, with farming being the main source of livelihood for most families. Healthcare and education infrastructure in the area has historically been limited, which is why our work is so critical.</p>
-        <p>Being embedded in the community allows us to understand local needs intimately and respond with targeted programs that make a real difference.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section values-section">
-    <div class="container">
-      <div class="section-title">
+      <div class="section-header">
+        <span class="section-label">What We Stand For</span>
         <h2>Our Core Values</h2>
-        <p>These values guide everything we do at Kato Laban Foundation.</p>
       </div>
       <div class="values-grid">
-        {coreValues.map((value, index) => (
+        {coreValues.map((value, i) => (
           <div class="value-card">
-            <div class="value-number">{index + 1}</div>
+            <div class="value-icon">
+              {value.icon === 'gift' && <span>🎁</span>}
+              {value.icon === 'shield' && <span>🛡️</span>}
+              {value.icon === 'lightbulb' && <span>💡</span>}
+              {value.icon === 'seedling' && <span>🌱</span>}
+            </div>
             <h3>{value.title}</h3>
             <p>{value.description}</p>
           </div>
@@ -69,167 +66,378 @@ const coreValues = [
     </div>
   </section>
 
-  <section class="section cta-section">
+  <!-- Team -->
+  <section class="team-section">
     <div class="container">
-      <div class="cta-content">
-        <h2>Join Our Mission</h2>
-        <p>We invite you to be part of the change we are creating in Isingiro District. Your support, whether through donations, volunteering, or simply spreading the word, helps us build a healthier, better educated community.</p>
-        <a href="/get-involved" class="btn btn-accent">Get Involved</a>
+      <div class="section-header">
+        <h2>The People Behind the Work</h2>
+        <p>Meet the dedicated team driving change in Isingiro District.</p>
       </div>
+      <div class="team-grid">
+        {teamMembers.map(member => (
+          <div class="team-card">
+            <div class="avatar-placeholder">
+              <span>{member.initials}</span>
+            </div>
+            <h3>—</h3>
+            <p class="team-title">{member.title}</p>
+            <p class="team-note">// TODO: Replace with real photo</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Story -->
+  <section class="story-section">
+    <div class="container">
+      <div class="story-grid">
+        <div class="story-image">
+          <div class="image-placeholder">
+            <span>Our Story</span>
+          </div>
+        </div>
+        <div class="story-content">
+          <span class="section-label">Our Story</span>
+          <h2>Built for Isingiro's Communities</h2>
+          <p>Kato Laban Foundation was established with a clear vision: to empower communities in Isingiro District by providing knowledge and sustainable development that enhances a quality life for the most vulnerable populations.</p>
+          <p>Operating from Kikagate Town Council in Isingiro District, we have dedicated ourselves to improving health outcomes, expanding access to quality education, and promoting climate education and climate justice.</p>
+          <p class="story-note">// TODO: Replace with real founding story content</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Join Our Mission</h2>
+      <p>Invite you to be part of the change we are creating in Isingiro District.</p>
+      <a href="/get-involved" class="btn btn-accent">Get Involved</a>
     </div>
   </section>
 </Layout>
 
 <style>
-  .page-header {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
-    padding: var(--spacing-3xl) 0;
-    text-align: center;
+  .hero-half {
     position: relative;
+    min-height: 60vh;
+    background: linear-gradient(135deg, #1B4332 0%, #2D6A4F 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .page-header::before {
-    content: '';
+  .hero-gradient {
     position: absolute;
     inset: 0;
-    background-image: url('/foundation.jpg');
-    background-size: cover;
-    background-position: center;
-    opacity: 0.3;
+    background: radial-gradient(ellipse at 30% 20%, rgba(233, 162, 59, 0.15) 0%, transparent 50%);
   }
 
-  .page-header > * {
+  .hero-content {
     position: relative;
     z-index: 1;
+    text-align: center;
+    max-width: 700px;
+    padding: 0 2rem;
   }
 
-  .page-header h1 {
-    color: var(--color-white);
-    margin-bottom: var(--spacing-md);
+  .breadcrumb {
+    font-size: 0.9rem;
+    color: #E9A23B;
+    margin-bottom: 1.5rem;
   }
 
-  .page-header p {
-    color: var(--color-neutral-100);
-    font-size: var(--font-size-lg);
+  .hero-half h1 {
+    color: #FFFFFF;
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-half p {
+    color: #D1D5DB;
+    font-size: 1.25rem;
+  }
+
+  /* Mission Vision */
+  .mission-vision {
+    padding: 5rem 0;
+    background-color: #FFFFFF;
+  }
+
+  .mv-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .mv-card {
+    padding: 3rem;
+    border-radius: 1rem;
+  }
+
+  .mv-card.dark {
+    background-color: #111827;
+  }
+
+  .mv-card.dark h2 {
+    color: #E9A23B;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+  }
+
+  .mv-card.dark p {
+    color: #FFFFFF;
+    font-size: 1.25rem;
+    line-height: 1.7;
+  }
+
+  .mv-card.light {
+    background-color: #F9F7F4;
+    border: 1px solid #E5E7EB;
+  }
+
+  .mv-card.light h2 {
+    color: #2D6A4F;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+  }
+
+  .mv-card.light p {
+    color: #374151;
+    font-size: 1.25rem;
+    line-height: 1.7;
+  }
+
+  /* Values */
+  .values-section {
+    background-color: #FFFFFF;
+    padding: 6rem 0;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .section-label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #E9A23B;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .section-header p {
+    color: #6B7280;
+    font-size: 1.1rem;
     max-width: 600px;
     margin: 0 auto;
-  }
-
-  .content-block {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .content-block h2 {
-    margin-bottom: var(--spacing-lg);
-  }
-
-  .content-block p {
-    color: var(--color-neutral-700);
-    line-height: 1.8;
-  }
-
-  .location-section {
-    background-color: var(--color-neutral-100);
-  }
-
-  .location-content {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .location-content h2 {
-    margin-bottom: var(--spacing-lg);
-  }
-
-  .location-content p {
-    color: var(--color-neutral-700);
-    line-height: 1.8;
-  }
-
-  .values-section {
-    background-color: var(--color-neutral-50);
   }
 
   .values-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--spacing-xl);
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
   }
 
   .value-card {
-    background-color: var(--color-white);
-    padding: var(--spacing-xl);
-    border-radius: var(--border-radius-lg);
-    box-shadow: var(--shadow-sm);
-    position: relative;
+    background-color: #F9F7F4;
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    transition: all 0.3s ease;
   }
 
-  .value-number {
-    position: absolute;
-    top: var(--spacing-lg);
-    right: var(--spacing-lg);
-    width: 40px;
-    height: 40px;
-    background-color: var(--color-primary);
-    color: var(--color-white);
-    border-radius: var(--border-radius-full);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: var(--font-size-lg);
+  .value-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .value-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
   }
 
   .value-card h3 {
-    font-size: var(--font-size-xl);
-    margin-bottom: var(--spacing-md);
-    padding-right: var(--spacing-xl);
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
   }
 
   .value-card p {
-    color: var(--color-neutral-600);
-    line-height: 1.7;
-    margin: 0;
+    color: #6B7280;
+    font-size: 0.95rem;
+    line-height: 1.6;
   }
 
-  .cta-section {
-    background-color: var(--color-neutral-100);
+  /* Team */
+  .team-section {
+    background-color: #111827;
+    padding: 6rem 0;
+  }
+
+  .team-section .section-header h2 {
+    color: #FFFFFF;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .team-section .section-header p {
+    color: #9CA3AF;
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .team-card {
     text-align: center;
   }
 
-  .cta-content {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: var(--spacing-2xl);
-    background-color: var(--color-white);
-    border-radius: var(--border-radius-lg);
-    box-shadow: var(--shadow-md);
+  .avatar-placeholder {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2D6A4F 0%, #E9A23B 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+  }
+
+  .avatar-placeholder span {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #FFFFFF;
+  }
+
+  .team-card h3 {
+    color: #FFFFFF;
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .team-title {
+    color: #9CA3AF;
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .team-note {
+    color: #6B7280;
+    font-size: 0.8rem;
+    font-style: italic;
+  }
+
+  /* Story */
+  .story-section {
+    background-color: #F9F7F4;
+    padding: 6rem 0;
+  }
+
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .story-image .image-placeholder {
+    aspect-ratio: 4/3;
+    background: linear-gradient(135deg, #2D6A4F 0%, #E9A23B 100%);
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .story-image span {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+
+  .story-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .story-content p {
+    color: #4B5563;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .story-note {
+    color: #9CA3AF;
+    font-style: italic;
+  }
+
+  /* CTA */
+  .cta-section {
+    background-color: #2D6A4F;
+    padding: 5rem 0;
+    text-align: center;
   }
 
   .cta-section h2 {
-    color: var(--color-primary);
-    margin-bottom: var(--spacing-md);
+    color: #FFFFFF;
+    font-size: 2.25rem;
+    margin-bottom: 0.75rem;
   }
 
   .cta-section p {
-    color: var(--color-neutral-600);
-    margin-bottom: var(--spacing-xl);
-    font-size: var(--font-size-lg);
+    color: #D1D5DB;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
   }
 
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.875rem 2.5rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .btn-accent {
+    background-color: #E9A23B;
+    color: #111827;
+  }
+
+  .btn-accent:hover {
+    background-color: #D4802E;
+    color: #FFFFFF;
+    transform: translateY(-2px);
+  }
+
+  /* Mobile */
   @media (max-width: 768px) {
-    .page-header {
-      padding: var(--spacing-2xl) 0;
-    }
-
-    .values-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .value-number {
-      position: static;
-      margin-bottom: var(--spacing-md);
-    }
+    .hero-half { min-height: 50vh; }
+    .hero-half h1 { font-size: 2.25rem; }
+    .mv-grid { grid-template-columns: 1fr; }
+    .values-grid { grid-template-columns: repeat(2, 1fr); }
+    .team-grid { grid-template-columns: 1fr; }
+    .story-grid { grid-template-columns: 1fr; }
   }
 </style>
