@@ -1,3 +1,8 @@
 node_modules/
 dist/
 .env
+.env.local
+.next/
+out/
+.DS_Store
+*.log

@@ -27,130 +27,466 @@ const workAreas = [
 ---
 
 <Layout title="Home">
-  <!-- Hero Section -->
-  <section class="relative h-[500px] md:h-[600px] bg-cover bg-center" style="background-image: url('/foundation.jpg');">
-    <!-- Dark overlay for text contrast -->
-    <div class="absolute inset-0 bg-black/60"></div>
-    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col justify-center text-white text-center">
-      <h1 class="text-4xl md:text-6xl font-bold mb-4">Empowering Communities in Isingiro District</h1>
-      <p class="text-lg md:text-xl max-w-2xl mx-auto mb-8">Building a healthier, better-educated future for all.</p>
-      <a href="/get-involved" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg text-lg font-semibold w-fit mx-auto">Join Us Today</a>
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Empowering Communities in Isingiro District</h1>
+      <p>Building a healthier, better-educated future for all.</p>
+      <a href="/get-involved" class="hero-cta">Join Us Today</a>
     </div>
   </section>
 
-  <!-- Warm Background Wrapper -->
   <div class="warm-bg">
-    
-    <!-- About Section -->
-    <section class="py-16 md:py-24">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <span class="text-sm font-semibold text-blue-700 uppercase tracking-widest">About Us</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mt-2 mb-6">Building a Better Future for Isingiro District</h2>
-            <p class="text-gray-600 text-lg leading-relaxed mb-6">{mission}</p>
-            <a href="/about" class="text-blue-600 font-semibold hover:text-blue-800 inline-flex items-center">Learn more about us <span class="ml-2">→</span></a>
+    <section class="about-section">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-text">
+            <span class="section-label">About Us</span>
+            <h2>Building a Better Future for Isingiro District</h2>
+            <p>{mission}</p>
+            <a href="/about" class="learn-more">Learn more about us <span>→</span></a>
           </div>
-          <div class="grid grid-cols-2 gap-4">
-            <div class="bg-white rounded-xl shadow-sm p-6 text-center border border-gray-100">
-              <div class="text-3xl font-bold text-blue-800">3</div>
-              <div class="text-gray-600 text-sm mt-1">Program Areas</div>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon">❤️</div>
+              <div class="stat-number">3</div>
+              <div class="stat-label">Program Areas</div>
             </div>
-            <div class="bg-white rounded-xl shadow-sm p-6 text-center border border-gray-100">
-              <div class="text-3xl font-bold text-blue-800">1000+</div>
-              <div class="text-gray-600 text-sm mt-1">Lives Impacted</div>
+            <div class="stat-card">
+              <div class="stat-icon">🙌</div>
+              <div class="stat-number">1000+</div>
+              <div class="stat-label">Lives Impacted</div>
             </div>
-            <div class="bg-white rounded-xl shadow-sm p-6 text-center border border-gray-100">
-              <div class="text-3xl font-bold text-blue-800">5+</div>
-              <div class="text-gray-600 text-sm mt-1">Years Serving</div>
+            <div class="stat-card">
+              <div class="stat-icon">📅</div>
+              <div class="stat-number">5+</div>
+              <div class="stat-label">Years Serving</div>
             </div>
-            <div class="bg-white rounded-xl shadow-sm p-6 text-center border border-gray-100">
-              <div class="text-3xl font-bold text-blue-800">1</div>
-              <div class="text-gray-600 text-sm mt-1">District Covered</div>
+            <div class="stat-card">
+              <div class="stat-icon">📍</div>
+              <div class="stat-number">1</div>
+              <div class="stat-label">District Covered</div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- What We Do Section -->
-    <section class="py-16 md:py-24">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-          <span class="text-sm font-semibold text-blue-700 uppercase tracking-widest">What We Do</span>
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mt-2">Our Mission in Action</h2>
-          <p class="text-gray-600 text-lg mt-4 max-w-2xl mx-auto">We work across three key areas to create lasting positive change in Isingiro District.</p>
+    <section class="programs-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">What We Do</span>
+          <h2>Our Mission in Action</h2>
+          <p>We work across three key areas to create lasting positive change in Isingiro District.</p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {workAreas.map((area, index) => (
-            <div class="group bg-white rounded-2xl shadow-sm border border-gray-100 p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-              <div class="w-14 h-14 bg-blue-50 group-hover:bg-blue-100 rounded-xl flex items-center justify-center mb-6 transition-all duration-300">
+        <div class="programs-grid">
+          {workAreas.map((area) => (
+            <div class="program-card">
+              <div class="program-icon">
                 {area.icon === 'health' && (
-                  <svg class="w-7 h-7 text-blue-600 group-hover:text-indigo-700 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                   </svg>
                 )}
                 {area.icon === 'education' && (
-                  <svg class="w-7 h-7 text-blue-600 group-hover:text-indigo-700 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
                   </svg>
                 )}
                 {area.icon === 'climate' && (
-                  <svg class="w-7 h-7 text-blue-600 group-hover:text-indigo-700 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8H5.5a2.5 2.5 0 000 5H8a2 2 0 012 2v1.055M20 21v-8a2 2 0 00-2-2h-1.055M16.5 12.5A2.5 2.5 0 0014 10h-4a2.5 2.5 0 000 5h4a2.5 2.5 0 001.5-2.5z" />
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8H5.5a2.5 2.5 0 000 5H8a2.5 2.5 0 012 2v1.055M20 21v-8a2 2 0 00-2-2h-1.055M16.5 12.5A2.5 2.5 0 0014 10h-4a2.5 2.5 0 000 5h4a2.5 2.5 0 001.5-2.5z" />
                   </svg>
                 )}
               </div>
-              <h3 class="text-xl font-bold text-gray-800 mb-3">{area.title}</h3>
-              <p class="text-gray-600 mb-4 leading-relaxed">{area.description}</p>
-              <a href="/what-we-do" class="text-blue-600 font-semibold hover:text-blue-800 inline-flex items-center">Learn more <span class="ml-1">→</span></a>
+              <h3>{area.title}</h3>
+              <p>{area.description}</p>
+              <a href="/what-we-do" class="learn-more">Learn more <span>→</span></a>
             </div>
           ))}
         </div>
       </div>
     </section>
 
-    <!-- Mission Vision Section -->
-    <section class="py-16 md:py-20">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid md:grid-cols-3 gap-6">
-          <div class="bg-white rounded-xl shadow-sm p-8 border-l-4 border-blue-600">
-            <span class="text-xs font-semibold text-gray-400 uppercase tracking-widest">Our Mission</span>
-            <p class="text-gray-700 mt-3 leading-relaxed">{mission}</p>
+    <section class="mission-section">
+      <div class="container">
+        <div class="mission-grid">
+          <div class="mission-card">
+            <span class="mission-label">Our Mission</span>
+            <p>{mission}</p>
           </div>
-          <div class="bg-white rounded-xl shadow-sm p-8 border-l-4 border-blue-600">
-            <span class="text-xs font-semibold text-gray-400 uppercase tracking-widest">Our Vision</span>
-            <p class="text-gray-700 mt-3 leading-relaxed">{vision}</p>
+          <div class="mission-card">
+            <span class="mission-label">Our Vision</span>
+            <p>{vision}</p>
           </div>
-          <div class="bg-blue-50 rounded-xl shadow-sm p-8 border-l-4 border-green-600">
-            <span class="text-xs font-semibold text-gray-400 uppercase tracking-widest">Our Values</span>
-            <p class="text-gray-700 mt-3 leading-relaxed">{coreValues}</p>
+          <div class="mission-card values-card">
+            <span class="mission-label">Our Values</span>
+            <p>{coreValues}</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="py-16 md:py-24 bg-blue-50">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Join Us in Making a Difference</h2>
-        <p class="text-gray-600 text-lg mb-8 max-w-2xl mx-auto">Your support can help us continue our work in Isingiro District. Whether through donations, volunteering, or spreading the word, every contribution matters.</p>
-        <a href="/get-involved" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl text-lg font-semibold shadow-md transition-colors duration-200">Get Involved Today <span class="ml-1">→</span></a>
+    <section class="cta-section">
+      <div class="container">
+        <h2>Join Us in Making a Difference</h2>
+        <p>Your support can help us continue our work in Isingiro District. Whether through donations, volunteering, or spreading the word, every contribution matters.</p>
+        <a href="/get-involved" class="cta-button">Get Involved Today <span>→</span></a>
       </div>
     </section>
-
   </div>
 </Layout>
 
 <style>
+  .hero {
+    position: relative;
+    height: 600px;
+    background-image: url('/foundation.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(45, 106, 79, 0.9) 0%, rgba(27, 67, 50, 0.85) 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 800px;
+    padding: 0 1.5rem;
+  }
+
+  .hero h1 {
+    color: #FFFFFF;
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    font-family: 'Playfair Display', serif;
+  }
+
+  .hero p {
+    color: #E5E7EB;
+    font-size: 1.35rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    background-color: #F4A261;
+    color: #1A1A1A;
+    padding: 1rem 2.5rem;
+    border-radius: 0.75rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .hero-cta:hover {
+    background-color: #E76F51;
+    color: #FFFFFF;
+    transform: scale(1.05);
+  }
+
   .warm-bg {
     background: linear-gradient(-45deg, #fff5eb, #fef8f0, #f0e6d6, #e8ddd0);
     background-size: 400% 400%;
     animation: warmShift 18s ease infinite;
   }
+
   @keyframes warmShift {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .about-section {
+    padding: 5rem 0;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .section-label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #2D6A4F;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+  }
+
+  .about-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #1A1A1A;
+  }
+
+  .about-text p {
+    font-size: 1.15rem;
+    color: #525252;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+
+  .learn-more {
+    color: #2D6A4F;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    transition: color 0.2s;
+  }
+
+  .learn-more:hover {
+    color: #1B4332;
+  }
+
+  .learn-more span {
+    margin-left: 0.5rem;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .stat-card {
+    background-color: #FFFFFF;
+    padding: 1.75rem;
+    border-radius: 1rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.04);
+    border: 1px solid #E5E7EB;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+  }
+
+  .stat-icon {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2D6A4F;
+  }
+
+  .stat-label {
+    color: #6B7280;
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+  }
+
+  .programs-section {
+    padding: 5rem 0;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .section-header h2 {
+    font-size: 2.5rem;
+    margin: 0.5rem 0 1rem;
+  }
+
+  .section-header p {
+    font-size: 1.15rem;
+    color: #525252;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .programs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .program-card {
+    background-color: #FFFFFF;
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 1px solid #E5E7EB;
+    transition: all 0.3s ease;
+  }
+
+  .program-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+  }
+
+  .program-icon {
+    width: 56px;
+    height: 56px;
+    background-color: #E8F5EE;
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    transition: background-color 0.3s;
+  }
+
+  .program-card:hover .program-icon {
+    background-color: #D1EAD8;
+  }
+
+  .program-icon svg {
+    width: 28px;
+    height: 28px;
+    color: #2D6A4F;
+  }
+
+  .program-card h3 {
+    font-size: 1.35rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .program-card p {
+    color: #525252;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  .mission-section {
+    padding: 4rem 0;
+  }
+
+  .mission-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .mission-card {
+    background-color: #FFFFFF;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+    border-left: 4px solid #2D6A4F;
+  }
+
+  .mission-card.values-card {
+    border-left-color: #40916C;
+    background-color: #E8F5EE;
+  }
+
+  .mission-label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #6B7280;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+  }
+
+  .mission-card p {
+    color: #404040;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .cta-section {
+    padding: 5rem 0;
+    background-color: #E8F5EE;
+    text-align: center;
+  }
+
+  .cta-section h2 {
+    font-size: 2.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .cta-section p {
+    font-size: 1.15rem;
+    color: #525252;
+    max-width: 650px;
+    margin: 0 auto 2rem;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background-color: #2D6A4F;
+    color: #FFFFFF;
+    padding: 1rem 2rem;
+    border-radius: 0.75rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .cta-button:hover {
+    background-color: #1B4332;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(45, 106, 79, 0.3);
+  }
+
+  .cta-button span {
+    margin-left: 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      height: 500px;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+    }
+
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .programs-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .mission-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cta-section h2 {
+      font-size: 1.75rem;
+    }
   }
 </style>

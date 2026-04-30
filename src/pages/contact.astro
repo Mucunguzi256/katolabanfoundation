@@ -39,7 +39,9 @@ import Layout from '../layouts/Layout.astro';
           <h2>Send Us a Message</h2>
           <p>Fill out the form below and we will get back to you as soon as possible.</p>
           
-          <form class="contact-form" action="https://formspree.io/f/contact@katolabanfoundation.org" method="POST">
+          <form class="contact-form" name="contact" method="POST" data-netlify="true">
+            <input type="hidden" name="form-name" value="contact" />
+            
             <div class="form-group">
               <label for="name">Name</label>
               <input type="text" id="name" name="name" required />
@@ -71,10 +73,17 @@ import Layout from '../layouts/Layout.astro';
     <div class="container">
       <div class="map-container">
         <h2>Find Us</h2>
-        <div class="map-placeholder">
-          <p>Map will be added here</p>
-          <p>Kikagate Town Council, Isingiro District, Uganda</p>
-        </div>
+        <iframe
+          class="map-embed"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.4!2d30.8!3d-0.85!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sKikagate%2C+Isingiro+District%2C+Uganda!5e0!3m2!1sen!2sug!4v1"
+          width="100%"
+          height="350"
+          style={{ border: 0, borderRadius: '8px' }}
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Kato Laban Foundation Location - Kikagate Town Council, Isingiro District"
+        ></iframe>
       </div>
     </div>
   </section>
@@ -212,24 +221,12 @@ import Layout from '../layouts/Layout.astro';
     margin-bottom: var(--spacing-xl);
   }
 
-  .map-placeholder {
-    background-color: var(--color-neutral-100);
+  .map-embed {
+    width: 100%;
+    height: 350px;
+    border: none;
     border-radius: var(--border-radius-lg);
-    padding: var(--spacing-3xl);
-    text-align: center;
-    border: 2px dashed var(--color-neutral-300);
-  }
-
-  .map-placeholder p {
-    color: var(--color-neutral-500);
-    margin: 0;
-  }
-
-  .map-placeholder p:first-child {
-    font-size: var(--font-size-lg);
-    font-weight: 500;
-    color: var(--color-neutral-600);
-    margin-bottom: var(--spacing-sm);
+    box-shadow: var(--shadow-sm);
   }
 
   @media (max-width: 768px) {
@@ -239,6 +236,10 @@ import Layout from '../layouts/Layout.astro';
 
     .contact-grid {
       grid-template-columns: 1fr;
+    }
+
+    .contact-details {
+      flex-direction: column;
     }
   }
 </style>

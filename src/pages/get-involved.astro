@@ -12,13 +12,46 @@ import Layout from '../layouts/Layout.astro';
 
   <section class="section donate-section">
     <div class="container">
-      <div class="action-grid">
-        <div class="action-card">
-          <h2>Donate</h2>
-          <p>Your financial support helps us continue our programs in health, education, and climate justice. Every contribution, no matter the size, makes a real difference in the lives of those we serve.</p>
-          <p>We ensure that donations are used efficiently and effectively to maximize impact in Isingiro District.</p>
-          <button class="btn btn-accent">Donate Now</button>
+      <div class="donation-info-card">
+        <h2>How to Donate</h2>
+        <p class="donation-intro">Your contribution goes directly to communities in Isingiro District. Choose the method that works best for you.</p>
+        
+        <div class="donation-methods">
+          <div class="donation-method">
+            <h3>Bank Transfer (Uganda)</h3>
+            <ul class="bank-details">
+              <li><strong>Bank:</strong> [Insert Bank Name]</li>
+              <li><strong>Account Name:</strong> Kato Laban Foundation</li>
+              <li><strong>Account Number:</strong> [Insert Account Number]</li>
+              <li><strong>Branch:</strong> [Insert Branch]</li>
+              <li><strong>SWIFT/BIC:</strong> [Insert if applicable]</li>
+            </ul>
+          </div>
+          
+          <div class="donation-method">
+            <h3>Mobile Money (MTN Uganda)</h3>
+            <ul class="bank-details">
+              <li><strong>MTN MoMo Number:</strong> [Insert Number]</li>
+              <li><strong>Name:</strong> [Insert Registered Name]</li>
+              <li><strong>Reference:</strong> Your name + "Donation"</li>
+            </ul>
+          </div>
+          
+          <div class="donation-method">
+            <h3>International Transfers</h3>
+            <p>Use the bank SWIFT details above.</p>
+            <p class="donation-note">For large gifts, contact us first at <a href="mailto:contact@katolabanfoundation.org">contact@katolabanfoundation.org</a> to ensure proper acknowledgment and receipt.</p>
+          </div>
         </div>
+        
+        <p class="donation-confirmation">After donating, please send your proof of payment to <a href="mailto:contact@katolabanfoundation.org">contact@katolabanfoundation.org</a> so we can acknowledge your gift and issue a receipt.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section volunteer-section">
+    <div class="container">
+      <div class="action-grid">
         <div class="action-card">
           <h2>Volunteer</h2>
           <p>Your time and skills are valuable. We welcome volunteers who want to make a difference, whether locally in Isingiro District or remotely supporting our programs.</p>
@@ -35,8 +68,8 @@ import Layout from '../layouts/Layout.astro';
         <h2>Volunteer With Us</h2>
         <p>Fill out the form below to express your interest in volunteering. We will get back to you within one week.</p>
         
-        <form class="volunteer-form" action="https://formspree.io/f/contact@katolabanfoundation.org" method="POST">
-          <input type="hidden" name="_subject" value="New Volunteer Sign Up" />
+        <form class="volunteer-form" name="volunteer" method="POST" data-netlify="true">
+          <input type="hidden" name="form-name" value="volunteer" />
           
           <div class="form-group">
             <label for="name">Full Name</label>
@@ -134,6 +167,88 @@ import Layout from '../layouts/Layout.astro';
 
   .donate-section {
     background-color: var(--color-neutral-50);
+  }
+
+  .donation-info-card {
+    background-color: var(--color-white);
+    padding: var(--spacing-2xl);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-md);
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .donation-info-card h2 {
+    color: var(--color-primary);
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .donation-intro {
+    text-align: center;
+    color: var(--color-neutral-600);
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .donation-methods {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .donation-method {
+    background-color: var(--color-neutral-50);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    border-top: 3px solid var(--color-primary);
+  }
+
+  .donation-method h3 {
+    color: var(--color-primary);
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .donation-method .bank-details {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .donation-method .bank-details li {
+    color: var(--color-neutral-700);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .donation-method p {
+    color: var(--color-neutral-600);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .donation-note {
+    font-size: var(--font-size-sm);
+    color: var(--color-neutral-500);
+    font-style: italic;
+  }
+
+  .donation-confirmation {
+    text-align: center;
+    padding: var(--spacing-lg);
+    background-color: var(--color-neutral-50);
+    border-radius: var(--border-radius-md);
+    color: var(--color-neutral-700);
+    font-weight: 500;
+  }
+
+  .donation-confirmation a {
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+
+  .volunteer-section {
+    background-color: var(--color-neutral-100);
   }
 
   .action-grid {
@@ -257,6 +372,10 @@ import Layout from '../layouts/Layout.astro';
   @media (max-width: 768px) {
     .page-header {
       padding: var(--spacing-2xl) 0;
+    }
+
+    .donation-methods {
+      grid-template-columns: 1fr;
     }
 
     .action-grid {

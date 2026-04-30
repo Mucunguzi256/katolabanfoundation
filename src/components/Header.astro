@@ -11,29 +11,254 @@ const navLinks = [
 ];
 ---
 
-<header class="bg-blue-800 text-white shadow-md sticky top-0 z-50">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-    <a href="/" class="flex items-center">
-      <img src="/logo.png" alt="Kato Laban Foundation" class="h-10 w-10 object-contain mr-3" />
-      <span class="text-xl font-bold hidden sm:block">KATO LABAN FOUNDATION</span>
+<header class="header">
+  <div class="header-container">
+    <a href="/" class="logo">
+      <img src="/logo.png" alt="Kato Laban Foundation" class="logo-img" />
+      <span class="logo-text">KATO LABAN FOUNDATION</span>
     </a>
 
-    <nav class="hidden md:flex items-center space-x-6">
-      {navLinks.map(link => (
-        <a 
-          href={link.href} 
-          class:list={[
-            'text-sm font-medium transition-colors duration-200',
-            currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href))
-              ? 'text-white'
-              : 'text-blue-100 hover:text-white'
-          ]}
-        >
-          {link.label}
-        </a>
-      ))}
-    </nav>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span class="menu-icon"></span>
+    </button>
 
-    <a href="/get-involved" class="bg-white text-blue-800 px-4 py-2 rounded-lg font-semibold hover:bg-blue-50 transition-colors duration-200">Donate</a>
+    <nav class="nav" id="nav" aria-hidden="true">
+      <ul class="nav-list">
+        {navLinks.map(link => (
+          <li>
+            <a 
+              href={link.href} 
+              class:list={[
+                'nav-link',
+                currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href))
+                  ? 'nav-link-active'
+              ]}
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <a href="/get-involved" class="donate-btn">Donate</a>
+    </nav>
   </div>
 </header>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const nav = document.getElementById('nav');
+  
+  if (toggle && nav) {
+    toggle.addEventListener('click', () => {
+      const isOpen = nav.getAttribute('aria-hidden') === 'false';
+      nav.setAttribute('aria-hidden', isOpen ? 'true' : 'false');
+      toggle.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+      toggle.classList.toggle('open', !isOpen);
+      document.body.classList.toggle('menu-open', !isOpen);
+    });
+
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        nav.setAttribute('aria-hidden', 'true');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.classList.remove('open');
+        document.body.classList.remove('menu-open');
+      });
+    });
+  }
+</script>
+
+<style>
+  .header {
+    background-color: var(--color-primary);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  .logo-img {
+    height: 40px;
+    width: 40px;
+    object-fit: contain;
+    margin-right: 0.75rem;
+  }
+
+  .logo-text {
+    color: var(--color-white);
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 101;
+  }
+
+  .menu-icon {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--color-white);
+    position: relative;
+    transition: background-color 0.2s;
+  }
+
+  .menu-icon::before,
+  .menu-icon::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-white);
+    transition: transform 0.2s;
+  }
+
+  .menu-icon::before {
+    top: -8px;
+  }
+
+  .menu-icon::after {
+    top: 8px;
+  }
+
+  .menu-toggle.open .menu-icon {
+    background-color: transparent;
+  }
+
+  .menu-toggle.open .menu-icon::before {
+    transform: rotate(45deg) translate(5px, 6px);
+  }
+
+  .menu-toggle.open .menu-icon::after {
+    transform: rotate(-45deg) translate(5px, -6px);
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .nav-list {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-link {
+    color: var(--color-neutral-100);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .nav-link:hover {
+    color: var(--color-white);
+  }
+
+  .nav-link-active {
+    color: var(--color-white);
+  }
+
+  .donate-btn {
+    background-color: var(--color-white);
+    color: var(--color-primary);
+    padding: 0.5rem 1.25rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.2s, transform 0.2s;
+  }
+
+  .donate-btn:hover {
+    background-color: var(--color-neutral-100);
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 768px) {
+    .menu-toggle {
+      display: block;
+    }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 280px;
+      height: 100vh;
+      background-color: var(--color-primary);
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 5rem 1.5rem 1.5rem;
+      gap: 1.5rem;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      box-shadow: -4px 0 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .nav:not([aria-hidden="true"]) {
+      transform: translateX(0);
+    }
+
+    .nav-list {
+      flex-direction: column;
+      gap: 0;
+      width: 100%;
+    }
+
+    .nav-list li {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-link {
+      display: block;
+      padding: 1rem 0;
+      font-size: 1.1rem;
+    }
+
+    .donate-btn {
+      width: 100%;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .logo-text {
+      display: none;
+    }
+  }
+
+  @media (min-width: 769px) {
+    .logo-text {
+      display: block;
+    }
+  }
+
+  body.menu-open {
+    overflow: hidden;
+  }
+</style>
